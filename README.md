@@ -1,4 +1,5 @@
 # CHEF — Constraint-based Hybrid Eating Framework
+*Your ingredients. Our intelligence.*
 
 > **Built as Capstone Project-I of IIT Patna BS in CSDA by:**
 > - Saba Saeed

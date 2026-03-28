@@ -1,4 +1,6 @@
 # Capstone Project Report: CHEF
+*Your ingredients. Our intelligence.*
+
 **Indian Institute of Technology Patna, Bachelor of Science in Data Analytics**
 
 ## 1. Abstract
