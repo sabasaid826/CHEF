@@ -1,7 +1,7 @@
 # Capstone Project Report: CHEF
 *Your ingredients. Our intelligence.*
 
-**Indian Institute of Technology Patna, Bachelor of Science in Data Analytics**
+**Indian Institute of Technology Patna, UG Program in CS & Data Analytics**
 
 ## 1. Abstract
 CHEF (Constraint-based Hybrid Eating Framework) is a full-stack web application designed to solve the daily "what to eat" dilemma by combining raw ingredient parsing, constraint-based filtering, and nutritional analysis into a single, cohesive hybrid framework.
