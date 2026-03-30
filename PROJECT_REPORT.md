@@ -17,12 +17,12 @@ CHEF (Constraint-based Hybrid Eating Framework) is a full-stack web application 
 - **UI Responsiveness**: 100% Lighthouse Accessibility and Best Practices score due to minimal DOM overhead and semantic HTML.
 - **Filtering Accuracy**: The system correctly identifies and enforces mutually exclusive dietary tags across the demo datasets.
 
-## 4. Team Contributions
-- **Saba Saeed**: Head developer; architected the core full-stack system, designed the user interface, implemented the database schemas, and programmed the advanced constraint engine logic.
-- **Aryan Sah**: Assisted with backend routing testing and FastApi endpoint documentation.
-- **Banshika Saha**: Sourced localized Indian vegetarian recipes and formatted nutritional mapping data.
-- **Hemnarayan Sahu**: Contributed to UI/UX manual testing flows and supported CSS modularization.
-- **Swastika Sahoo**: Managed the overall project documentation structuring and prepared presentation workflows.
+## 4. Contribution Summary
+- **Saba Saeed**: Designed the system architecture, contributed to the FastAPI backend, assisted with the UI/UX, and programmed the constraint engine logic.
+- **Aryan Sah**: Assisted with backend routing testing, structured API health checks, and managed the FastAPI endpoint parameters and documentation.
+- **Banshika Saha**: Sourced localized Indian vegetarian recipe datasets, formatted nutritional mapping data, and populated the backend database logic.
+- **Hemnarayan Sahu**: Contributed to UI/UX manual testing flows, validated responsive design constraints, and supported CSS modularization.
+- **Swastika Sahoo**: Managed the project documentation structuring, prepared presentation workflows, and assisted with the SQLite (SQLAlchemy ORM) database schemas.
 
 ## 5. Conclusion
 The CHEF application successfully demonstrates the integration of modern web deployment strategies with data-driven constraint filtering, resulting in a production-ready capstone prototype.

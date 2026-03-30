@@ -39,7 +39,7 @@ Then open **http://127.0.0.1:8000** in your browser.
 | Recipe Search | Demo data (10 recipes) | Set `SPOONACULAR_API_KEY` in `.env` for real API |
 | **Constraint Filtering** | Diet, calories, cook time | Filter recipes by vegetarian/vegan/keto/gluten-free/high-protein, max kcal, max minutes |
 | Nutrition Lookup | Built-in database (30+ foods) | Per-100g values, scales by quantity |
-| Food Detection | Filename keyword matching | Demo only — not real ML |
+| Food Detection | Filename keyword matching | Demo placeholder — real ML (YOLOv8) planned for Capstone-II |
 | Save Recipes | SQLite database | Persists between restarts |
 
 ## API Endpoints
@@ -58,7 +58,7 @@ Then open **http://127.0.0.1:8000** in your browser.
 ## Project Structure
 
 ```
-Chef1/
+CHEF/
 ├── backend/
 │   ├── .env                 # Configuration (all API keys optional)
 │   ├── requirements.txt     # Python 3.14-safe dependencies
