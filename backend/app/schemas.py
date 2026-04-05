@@ -6,6 +6,70 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
+# ── Authentication ──────────────────────────────────────────────
+
+class UserSignupRequest(BaseModel):
+    username: str = Field(..., min_length=3, max_length=50, description="Unique username")
+    email: str = Field(..., min_length=5, max_length=255, description="Email address")
+    password: str = Field(..., min_length=6, max_length=128, description="Password (min 6 characters)")
+
+
+class UserLoginRequest(BaseModel):
+    username: str = Field(..., min_length=1)
+    password: str = Field(..., min_length=1)
+
+
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    username: str
+    user_id: int
+
+
+class UserResponse(BaseModel):
+    id: int
+    username: str
+    email: str
+    
+    age: Optional[int] = None
+    gender: Optional[str] = None
+    weight_kg: Optional[float] = None
+    height_cm: Optional[float] = None
+    activity_level: Optional[str] = None
+    goal: Optional[str] = None
+    
+    target_calories: Optional[int] = None
+    target_protein: Optional[int] = None
+    target_carbs: Optional[int] = None
+    target_fat: Optional[int] = None
+
+    class Config:
+        from_attributes = True
+
+
+# ── TDEE Calculator ─────────────────────────────────────────────
+
+class TDEERequest(BaseModel):
+    age: int = Field(..., gt=0, lt=120, description="Age in years")
+    gender: str = Field(..., pattern="^(male|female)$")
+    weight_kg: float = Field(..., gt=0, description="Weight in kg")
+    height_cm: float = Field(..., gt=0, description="Height in cm")
+    activity_level: str = Field(
+        ..., 
+        description="sedentary, lightly_active, moderately_active, very_active, extra_active"
+    )
+    goal: str = Field(
+        ..., 
+        description="lose, maintain, gain"
+    )
+
+class TDEEResponse(BaseModel):
+    target_calories: int
+    target_protein: int
+    target_carbs: int
+    target_fat: int
+
+
 # ── Ingredients ─────────────────────────────────────────────────
 
 class IngredientItem(BaseModel):

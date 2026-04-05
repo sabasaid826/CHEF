@@ -1,7 +1,7 @@
 """
 CHEF — Constraint-based Hybrid Eating Framework
 
-Capstone project: a Python 3.14-compatible food assistant API.
+Capstone project: a Python 3.14-compatible food assistant API with JWT auth.
   • Ingredient parsing (rule-based)
   • Recipe search (demo data + optional Spoonacular)
   • Nutrition lookup (built-in database)
@@ -57,8 +57,10 @@ app.add_middleware(
 
 
 # ── Register routers ──────────────────────────────────────────
-from app.routers import ingredients, recipes, nutrition, detection  # noqa: E402
+from app.routers import ingredients, recipes, nutrition, detection, auth_router, tdee  # noqa: E402
 
+app.include_router(auth_router.router)
+app.include_router(tdee.router)
 app.include_router(ingredients.router)
 app.include_router(recipes.router)
 app.include_router(nutrition.router)

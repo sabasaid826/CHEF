@@ -18,8 +18,9 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
         if (target) {
             target.classList.add('active');
         }
-        // Load saved recipes when switching to that tab
+        // Load saved data when switching to appropriate tabs
         if (page === 'saved') loadSavedRecipes();
+        if (page === 'tdee') loadTDEEProfile();
     });
 });
 
@@ -37,11 +38,20 @@ function showStatus(msg, type = 'info') {
 }
 
 
-// ── API Helpers ───────────────────────────────────────────────
+// ── API Helpers (auth-aware) ──────────────────────────────────
+function getAuthHeaders() {
+    const token = localStorage.getItem('chef_token');
+    const headers = {};
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+    return headers;
+}
+
 async function apiPost(path, body) {
+    const headers = getAuthHeaders();
+    headers['Content-Type'] = 'application/json';
     const res = await fetch(`${API}${path}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify(body),
     });
     if (!res.ok) {
@@ -52,7 +62,9 @@ async function apiPost(path, body) {
 }
 
 async function apiGet(path) {
-    const res = await fetch(`${API}${path}`);
+    const res = await fetch(`${API}${path}`, {
+        headers: getAuthHeaders(),
+    });
     if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         throw new Error(err.detail || `Request failed (${res.status})`);
@@ -61,13 +73,129 @@ async function apiGet(path) {
 }
 
 async function apiDelete(path) {
-    const res = await fetch(`${API}${path}`, { method: 'DELETE' });
+    const res = await fetch(`${API}${path}`, {
+        method: 'DELETE',
+        headers: getAuthHeaders(),
+    });
     if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         throw new Error(err.detail || `Request failed (${res.status})`);
     }
     return res.json();
 }
+
+
+// ═══════════════════════════════════════════════════════════════
+// AUTHENTICATION
+// ═══════════════════════════════════════════════════════════════
+
+let authMode = 'login';  // 'login' or 'signup'
+
+function isLoggedIn() {
+    return !!localStorage.getItem('chef_token');
+}
+
+function updateAuthUI() {
+    const loginBtn = document.getElementById('btn-show-login');
+    const greeting = document.getElementById('user-greeting');
+    const greetingName = document.getElementById('greeting-username');
+
+    const tdeeNotice = document.getElementById('tdee-auth-notice');
+
+    if (isLoggedIn()) {
+        const username = localStorage.getItem('chef_username') || 'User';
+        loginBtn.classList.add('hidden');
+        greeting.classList.remove('hidden');
+        greetingName.textContent = `👋 ${username}`;
+        if (tdeeNotice) tdeeNotice.textContent = "Calculations will be saved automatically to your profile.";
+    } else {
+        loginBtn.classList.remove('hidden');
+        greeting.classList.add('hidden');
+        greetingName.textContent = '';
+        if (tdeeNotice) tdeeNotice.textContent = "Guest Mode: Calculations won't be saved. Log in to personalize your profile.";
+    }
+}
+
+function showAuthModal() {
+    document.getElementById('auth-modal').classList.remove('hidden');
+    document.getElementById('auth-username').focus();
+}
+
+function hideAuthModal() {
+    document.getElementById('auth-modal').classList.add('hidden');
+    document.getElementById('auth-error').classList.add('hidden');
+    document.getElementById('auth-form').reset();
+}
+
+function toggleAuthMode() {
+    authMode = authMode === 'login' ? 'signup' : 'login';
+    const title = document.getElementById('auth-modal-title');
+    const submitBtn = document.getElementById('btn-auth-submit');
+    const switchText = document.getElementById('auth-switch-text');
+    const switchBtn = document.getElementById('auth-switch-btn');
+    const signupFields = document.getElementById('signup-fields');
+    const emailInput = document.getElementById('auth-email');
+
+    if (authMode === 'signup') {
+        title.textContent = 'Create Account';
+        submitBtn.textContent = 'Sign Up';
+        switchText.textContent = 'Already have an account?';
+        switchBtn.textContent = 'Login';
+        signupFields.classList.remove('hidden');
+        emailInput.required = true;
+    } else {
+        title.textContent = 'Login to CHEF';
+        submitBtn.textContent = 'Login';
+        switchText.textContent = "Don't have an account?";
+        switchBtn.textContent = 'Sign Up';
+        signupFields.classList.add('hidden');
+        emailInput.required = false;
+    }
+    document.getElementById('auth-error').classList.add('hidden');
+}
+
+async function handleAuth(event) {
+    event.preventDefault();
+    const errorDiv = document.getElementById('auth-error');
+    errorDiv.classList.add('hidden');
+
+    const username = document.getElementById('auth-username').value.trim();
+    const password = document.getElementById('auth-password').value;
+
+    try {
+        let data;
+        if (authMode === 'signup') {
+            const email = document.getElementById('auth-email').value.trim();
+            data = await apiPost('/api/auth/signup', { username, email, password });
+            showStatus(`Welcome to CHEF, ${data.username}! 🎉`, 'success');
+        } else {
+            data = await apiPost('/api/auth/login', { username, password });
+            showStatus(`Welcome back, ${data.username}! 👋`, 'success');
+        }
+
+        // Store token and user info
+        localStorage.setItem('chef_token', data.access_token);
+        localStorage.setItem('chef_username', data.username);
+        localStorage.setItem('chef_user_id', data.user_id);
+
+        updateAuthUI();
+        hideAuthModal();
+    } catch (e) {
+        errorDiv.textContent = e.message;
+        errorDiv.classList.remove('hidden');
+    }
+}
+
+function logout() {
+    localStorage.removeItem('chef_token');
+    localStorage.removeItem('chef_username');
+    localStorage.removeItem('chef_user_id');
+    updateAuthUI();
+    showStatus('Logged out successfully', 'info');
+}
+
+// Initialize auth UI on page load
+updateAuthUI();
 
 function setLoading(btn, loading) {
     if (loading) {
@@ -578,4 +706,77 @@ function esc(str, forAttr = false) {
         result = result.replace(/'/g, '&#39;').replace(/"/g, '&quot;');
     }
     return result;
+}
+// ═══════════════════════════════════════════════════════════════
+// TDEE / PROFILE PAGE
+// ═══════════════════════════════════════════════════════════════
+
+async function loadTDEEProfile() {
+    if (!isLoggedIn()) return;
+    
+    try {
+        const user = await apiGet('/api/auth/me');
+        if (user.age) {
+            document.getElementById('tdee-age').value = user.age;
+            document.getElementById('tdee-gender').value = user.gender;
+            document.getElementById('tdee-weight').value = user.weight_kg;
+            document.getElementById('tdee-height').value = user.height_cm;
+            document.getElementById('tdee-activity').value = user.activity_level;
+            document.getElementById('tdee-goal').value = user.goal;
+            
+            // If they already have targets stored, display them
+            if (user.target_calories) {
+                renderTDEEResults({
+                    target_calories: user.target_calories,
+                    target_protein: user.target_protein,
+                    target_carbs: user.target_carbs,
+                    target_fat: user.target_fat
+                });
+            }
+        }
+    } catch (e) {
+        console.error("Failed to load TDEE profile", e);
+    }
+}
+
+async function handleTDEE(event) {
+    event.preventDefault();
+    
+    const requestData = {
+        age: parseInt(document.getElementById('tdee-age').value),
+        gender: document.getElementById('tdee-gender').value,
+        weight_kg: parseFloat(document.getElementById('tdee-weight').value),
+        height_cm: parseFloat(document.getElementById('tdee-height').value),
+        activity_level: document.getElementById('tdee-activity').value,
+        goal: document.getElementById('tdee-goal').value
+    };
+    
+    const btn = document.getElementById('btn-tdee-calc');
+    setLoading(btn, true);
+    
+    try {
+        const path = isLoggedIn() ? '/api/tdee/save' : '/api/tdee/calculate';
+        const result = await apiPost(path, requestData);
+        
+        renderTDEEResults(result);
+        if (isLoggedIn()) {
+            showStatus('Profile updated and targets calculated!', 'success');
+        } else {
+            showStatus('TDEE calculated!', 'success');
+        }
+    } catch (e) {
+        showStatus(e.message, 'error');
+    } finally {
+        setLoading(btn, false);
+    }
+}
+
+function renderTDEEResults(data) {
+    const resultsArea = document.getElementById('tdee-results');
+    resultsArea.classList.remove('hidden');
+    
+    document.getElementById('target-cals').textContent = data.target_calories;
+    document.getElementById('target-protein').textContent = data.target_protein;
+    document.getElementById('target-carbs').textContent = data.target_carbs;
+    document.getElementById('target-fat').textContent = data.target_fat;
 }

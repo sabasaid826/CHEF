@@ -16,6 +16,10 @@ python-multipart>=0.0.18
 # HTTP client (for optional external API calls)
 httpx>=0.28.0
 
+# Authentication (JWT + password hashing)
+passlib[bcrypt]>=1.7.4
+python-jose[cryptography]>=3.3.0
+
 # Environment
 python-dotenv>=1.0.1
 

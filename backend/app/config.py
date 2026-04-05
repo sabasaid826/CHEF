@@ -33,5 +33,10 @@ class Settings(BaseSettings):
     EDAMAM_APP_ID: str = ""
     EDAMAM_APP_KEY: str = ""
 
+    # JWT Authentication
+    JWT_SECRET_KEY: str = "chef-capstone-secret-key-change-in-production"
+    JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRY_MINUTES: int = 30
+
 
 settings = Settings()

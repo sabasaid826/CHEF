@@ -10,7 +10,8 @@ import httpx
 
 from app.config import settings
 from app.database import get_db
-from app.models import SavedRecipe
+from app.models import SavedRecipe, User
+from app.auth import get_current_user
 from app.schemas import (
     RecipeSearchRequest,
     RecipeSearchResponse,
@@ -254,9 +255,10 @@ async def search_recipes(req: RecipeSearchRequest):
 
 
 @router.post("/save", response_model=SavedRecipeResponse)
-def save_recipe(req: SaveRecipeRequest, db: Session = Depends(get_db)):
-    """Save a recipe to the local collection."""
+def save_recipe(req: SaveRecipeRequest, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    """Save a recipe to the current user's collection. Requires authentication."""
     recipe = SavedRecipe(
+        user_id=current_user.id,
         title=req.title,
         image_url=req.image_url,
         summary=req.summary,
@@ -277,15 +279,15 @@ def save_recipe(req: SaveRecipeRequest, db: Session = Depends(get_db)):
 
 
 @router.get("/saved", response_model=list[SavedRecipeResponse])
-def list_saved_recipes(db: Session = Depends(get_db)):
-    """List all saved recipes."""
-    return db.query(SavedRecipe).order_by(SavedRecipe.saved_at.desc()).all()
+def list_saved_recipes(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    """List saved recipes for the current user. Requires authentication."""
+    return db.query(SavedRecipe).filter(SavedRecipe.user_id == current_user.id).order_by(SavedRecipe.saved_at.desc()).all()
 
 
 @router.delete("/saved/{recipe_id}")
-def delete_saved_recipe(recipe_id: int, db: Session = Depends(get_db)):
-    """Delete a saved recipe by ID."""
-    recipe = db.query(SavedRecipe).filter(SavedRecipe.id == recipe_id).first()
+def delete_saved_recipe(recipe_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    """Delete a saved recipe by ID. Only the owner can delete. Requires authentication."""
+    recipe = db.query(SavedRecipe).filter(SavedRecipe.id == recipe_id, SavedRecipe.user_id == current_user.id).first()
     if not recipe:
         raise HTTPException(status_code=404, detail="Recipe not found")
     db.delete(recipe)
