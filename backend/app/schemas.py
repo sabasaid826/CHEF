@@ -111,6 +111,7 @@ class RecipeItem(BaseModel):
     source_url: Optional[str] = None
     nutrition: Optional[RecipeNutrition] = None
     diets: list[str] = []
+    meal_type: Optional[str] = None
     match_score: float = 0.0
 
 
@@ -120,7 +121,7 @@ class RecipeSearchRequest(BaseModel):
     # ── Constraints ──
     max_calories: Optional[int] = Field(None, ge=50, le=5000, description="Max calories per serving")
     max_time: Optional[int] = Field(None, ge=5, le=300, description="Max cook time in minutes")
-    diet: Optional[str] = Field(None, description="Dietary filter: vegetarian, vegan, keto, gluten-free, high-protein")
+    diet: Optional[str] = Field(None, description="Dietary filter: vegetarian, vegan, halal, keto, gluten-free, high-protein")
 
 
 class RecipeSearchResponse(BaseModel):

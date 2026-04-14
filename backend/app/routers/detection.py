@@ -1,103 +1,101 @@
 """
-Food detection router — RULE-BASED DEMO (no real ML).
-Accepts an image filename and uses keyword matching to guess food items.
-Clearly labeled as a demo feature.
+Food detection router — Machine Learning Pipeline (YOLOv8).
+Accepts an uploaded image, runs inference using YOLOv8 to detect food objects,
+and maps them to known ingredients.
 """
 
 from fastapi import APIRouter, UploadFile, File
+import io
+from PIL import Image
+from ultralytics import YOLO
+
 from app.schemas import DetectionResult, DetectedFood
 
 router = APIRouter(prefix="/api/detect", tags=["detection"])
 
-# ── Keyword-to-food mapping for demo detection ─────────────────
-FOOD_KEYWORDS: dict[str, str] = {
-    "pizza": "pizza",
-    "burger": "burger",
-    "sandwich": "sandwich",
-    "salad": "salad",
-    "pasta": "pasta",
-    "spaghetti": "pasta",
-    "noodle": "noodles",
-    "rice": "rice",
-    "chicken": "chicken",
-    "steak": "beef steak",
-    "beef": "beef",
-    "fish": "fish",
-    "salmon": "salmon",
-    "sushi": "sushi",
-    "soup": "soup",
-    "bread": "bread",
-    "cake": "cake",
-    "pie": "pie",
-    "egg": "eggs",
-    "fruit": "mixed fruit",
-    "apple": "apple",
-    "banana": "banana",
-    "orange": "orange",
-    "tomato": "tomato",
-    "potato": "potato",
-    "fries": "french fries",
-    "taco": "taco",
-    "burrito": "burrito",
-    "curry": "curry",
-    "pancake": "pancakes",
-    "waffle": "waffles",
-    "ice cream": "ice cream",
-    "smoothie": "smoothie",
-    "donut": "donut",
-    "cookie": "cookies",
+# ── YOLOv8 Model Initialization ───────────────────────────────────────────────
+# Load the pre-trained weights (yolov8n.pt will automatically download on first run)
+model = YOLO('yolov8n.pt')
+
+# COCO dataset class indices for food items we want to extract
+FOOD_CLASSES = {
+    46: "banana",
+    47: "apple",
+    48: "sandwich",
+    49: "orange",
+    50: "broccoli",
+    51: "carrot",
+    52: "hot dog",
+    53: "pizza",
+    54: "donut",
+    55: "cake"
 }
-
-
-def _detect_from_filename(filename: str) -> list[DetectedFood]:
-    """Try to detect food from the filename using keyword matching."""
-    name_lower = filename.lower()
-    detected = []
-    for keyword, food in FOOD_KEYWORDS.items():
-        if keyword in name_lower:
-            detected.append(DetectedFood(
-                label=food,
-                confidence=0.75,
-                ingredient=food,
-            ))
-    return detected
 
 
 @router.post("/image", response_model=DetectionResult)
 async def detect_food(file: UploadFile = File(...)):
     """
-    🧪 DEMO: Rule-based food detection from image filename.
+    Real ML food detection from an uploaded image buffer.
 
-    This is NOT real ML/computer vision — it simply matches keywords
-    in the uploaded filename against a list of known foods.
-
-    Upload a file named like "chicken_salad.jpg" or "pizza.png" to see results.
-    In a production version, this would use a real image classification model.
+    Passes the buffer to YOLOv8, filters out non-food items (like 'person', 'car'),
+    and returns localized ingredients.
     """
-    filename = file.filename or "unknown"
+    # 1. Read the bytes into a PIL Image
+    image_bytes = await file.read()
+    try:
+        img = Image.open(io.BytesIO(image_bytes))
+        img.verify() # Verify it's an image
+        img = Image.open(io.BytesIO(image_bytes)) # Re-open after verify
+    except Exception:
+        return DetectionResult(
+            detected_foods=[],
+            ingredients=[],
+            message="Invalid image file format.",
+            method="yolov8_ml"
+        )
 
-    # Read and discard the file content (we only use the filename for demo)
-    await file.read()
+    # 2. Run YOLOv8 Inference
+    # We restrict execution classes to our target food indexes
+    results = model.predict(source=img, classes=list(FOOD_CLASSES.keys()), conf=0.25)
+    
+    # 3. Parse Box Predictions
+    detected: list[DetectedFood] = []
+    seen_ingredients = set()
 
-    detected = _detect_from_filename(filename)
+    for result in results:
+        boxes = result.boxes
+        for box in boxes:
+            class_id = int(box.cls[0].item())
+            confidence = float(box.conf[0].item())
+            
+            if class_id in FOOD_CLASSES:
+                food_name = FOOD_CLASSES[class_id]
+                
+                # We'll map the raw YOLO label to a more query-friendly ingredient if necessary
+                # In this small set, the YOLO labels are already good queries.
+                ingredient = food_name 
+                
+                # Prevent adding duplicate ingredients in the final list, but track all objects
+                if ingredient not in seen_ingredients:
+                    seen_ingredients.add(ingredient)
+                
+                detected.append(DetectedFood(
+                    label=food_name,
+                    confidence=confidence,
+                    ingredient=ingredient
+                ))
 
     if not detected:
         return DetectionResult(
             detected_foods=[],
             ingredients=[],
-            message=(
-                f"No food detected in '{filename}'. "
-                "This is a demo — try naming your file with a food keyword "
-                "(e.g., 'chicken_salad.jpg', 'pizza.png')."
-            ),
-            method="rule_based_demo",
+            message="No food items from our known classes were detected in the image.",
+            method="yolov8_ml"
         )
-
-    ingredients = list({d.ingredient for d in detected})
 
     return DetectionResult(
         detected_foods=detected,
-        ingredients=ingredients,
-        message=f"Detected {len(detected)} food(s) from filename (rule-based demo).",
-        method="rule_based_demo",
+        ingredients=list(seen_ingredients),
+        message=f"Successfully detected {len(detected)} food item(s) using YOLOv8 computer vision.",
+        method="yolov8_ml"
     )

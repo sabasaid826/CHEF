@@ -21,7 +21,8 @@
             </div>
         </div>
         <div class="nav-links">
-            <button class="nav-btn active" data-page="ingredients" id="nav-ingredients">Ingredients</button>
+            <button class="nav-btn active" data-page="kitchen" id="nav-kitchen">The Kitchen</button>
+            <button class="nav-btn" data-page="ingredients" id="nav-ingredients">Ingredients</button>
             <button class="nav-btn" data-page="recipes" id="nav-recipes">Recipes</button>
             <button class="nav-btn" data-page="nutrition" id="nav-nutrition">Nutrition</button>
             <button class="nav-btn" data-page="tdee" id="nav-tdee">Profile/TDEE</button>
@@ -72,8 +73,44 @@
     <!-- ── Main Content ────────────────────────────────────── -->
     <main id="app-main">
 
+        <!-- KITCHEN PAGE / HOME -->
+        <section id="page-kitchen" class="page active">
+            <div class="kitchen-hero-header">
+                <h1 id="kitchen-greeting">Welcome to the Kitchen</h1>
+                <p class="subtitle">Your personalized food assistant</p>
+            </div>
+            
+            <div class="kitchen-layout">
+                <div class="kitchen-main-col">
+                    <h2 class="section-title">✨ Recipe of the Day</h2>
+                    <div id="daily-recipe-container" class="card glass daily-recipe-card">
+                        <!-- Filled by JS -->
+                        <div style="padding: 20px; text-align: center;">Loading special recipe...</div>
+                    </div>
+                </div>
+                
+                <div class="kitchen-side-col">
+                    <h2 class="section-title">🚀 Quick Actions</h2>
+                    <div class="card glass quick-actions">
+                        <button class="btn-primary btn-full quick-action-btn" onclick="document.getElementById('nav-ingredients').click()">
+                            <span class="btn-icon">🔍</span> Got ingredients?
+                        </button>
+                        <button class="btn-secondary btn-full quick-action-btn" onclick="document.getElementById('nav-recipes').click()">
+                            <span class="btn-icon">🍽️</span> Find any recipe
+                        </button>
+                        <button class="btn-secondary btn-full quick-action-btn" onclick="document.getElementById('nav-detection').click()">
+                            <span class="btn-icon">📸</span> Detect food by image
+                        </button>
+                        <button class="btn-secondary btn-full quick-action-btn" onclick="document.getElementById('nav-tdee').click()">
+                            <span class="btn-icon">🔥</span> Check Calorie Goals
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- INGREDIENTS PAGE -->
-        <section id="page-ingredients" class="page active">
+        <section id="page-ingredients" class="page">
             <div class="page-header">
                 <h1>Enter Ingredients</h1>
                 <p class="subtitle">Type what you have and we'll find recipes for you</p>
@@ -106,6 +143,7 @@
                         <option value="">Any Diet</option>
                         <option value="vegetarian">🥬 Vegetarian</option>
                         <option value="vegan">🌱 Vegan</option>
+                        <option value="halal">🌙 Halal</option>
                         <option value="keto">🥑 Keto</option>
                         <option value="gluten-free">🌾 Gluten-Free</option>
                         <option value="high-protein">💪 High-Protein</option>
@@ -138,8 +176,8 @@
         <!-- ── Detection Page ─────────────────────────────────── -->
         <div id="page-detection" class="page">
             <div class="page-header">
-                <h1>Food Detection</h1>
-                <p class="subtitle">Upload a photo to see matching recipes (Demo prototype)</p>
+                <h1>Food Detection (ML)</h1>
+                <p class="subtitle">Upload a photo to detect food items using Computer Vision (YOLOv8)</p>
             </div>
             
             <div class="card glass">
@@ -268,6 +306,6 @@
         <span id="status-text"></span>
     </div>
 
-    <script src="/static/app.js"></script>
+    <script src="/static/app.js?v=2"></script>
 </body>
 </html>

@@ -5,6 +5,8 @@ Also handles saving/listing/deleting bookmarked recipes from the SQLite database
 
 import json
 from pathlib import Path
+from datetime import datetime
+import random
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 import httpx
@@ -148,48 +150,48 @@ DEMO_RECIPES = [
         summary="Flattened rice tossed with onion, potato, peanuts, and turmeric — a light breakfast.", ready_in_minutes=15, servings=2,
         ingredients=["poha", "onion", "potato", "peanuts", "mustard seeds", "curry leaves", "turmeric", "green chili", "oil", "salt", "lemon"],
         instructions="1. Wash and drain poha.\n2. Temper mustard, curry leaves, peanuts.\n3. Add onion, potato, turmeric.\n4. Add poha, mix, squeeze lemon.",
-        nutrition=RecipeNutrition(calories=190, protein_g=5, carbs_g=30, fat_g=6), diets=["vegetarian", "gluten-free", "vegan"]),
+        nutrition=RecipeNutrition(calories=190, protein_g=5, carbs_g=30, fat_g=6), diets=["vegetarian", "gluten-free", "vegan"], meal_type="Breakfast"),
 
     # ── Egg & Non-Veg ──
     RecipeItem(id="r-24", title="Egg Curry",
         summary="Boiled eggs simmered in a spicy onion-tomato gravy — protein-packed comfort food.", ready_in_minutes=25, servings=3,
         ingredients=["eggs", "onion", "tomato", "garlic", "ginger", "cumin", "turmeric", "red chili powder", "garam masala", "oil", "salt"],
         instructions="1. Boil and halve eggs.\n2. Sauté onion, ginger-garlic, tomato.\n3. Add spices and water, simmer.\n4. Add eggs, cook 5 min.",
-        nutrition=RecipeNutrition(calories=250, protein_g=16, carbs_g=10, fat_g=16), diets=["gluten-free", "high-protein"]),
+        nutrition=RecipeNutrition(calories=250, protein_g=16, carbs_g=10, fat_g=16), diets=["gluten-free", "high-protein"], meal_type="Lunch/Dinner"),
     RecipeItem(id="r-25", title="Chicken Curry",
         summary="Classic Indian chicken curry with rich onion-tomato-spice gravy.", ready_in_minutes=40, servings=4,
         ingredients=["chicken", "onion", "tomato", "garlic", "ginger", "cumin", "turmeric", "coriander powder", "garam masala", "oil", "salt", "green chili"],
         instructions="1. Sauté onion until golden.\n2. Add ginger-garlic, tomato, spices.\n3. Add chicken, cook 25 min.\n4. Finish with garam masala.",
-        nutrition=RecipeNutrition(calories=380, protein_g=30, carbs_g=10, fat_g=22), diets=["gluten-free", "high-protein"]),
+        nutrition=RecipeNutrition(calories=380, protein_g=30, carbs_g=10, fat_g=22), diets=["gluten-free", "high-protein"], meal_type="Lunch/Dinner"),
     RecipeItem(id="r-26", title="Fish Fry",
         summary="Crispy pan-fried fish fillets marinated in turmeric, chili, and lemon.", ready_in_minutes=20, servings=2,
         ingredients=["fish", "turmeric", "red chili powder", "salt", "lemon", "garlic", "oil"],
         instructions="1. Marinate fish with turmeric, chili, salt, garlic, lemon.\n2. Rest 15 min.\n3. Shallow fry until crispy on both sides.",
-        nutrition=RecipeNutrition(calories=280, protein_g=24, carbs_g=5, fat_g=18), diets=["gluten-free", "high-protein", "keto"]),
+        nutrition=RecipeNutrition(calories=280, protein_g=24, carbs_g=5, fat_g=18), diets=["gluten-free", "high-protein", "keto"], meal_type="Snack"),
 
     # ── Rice Dishes ──
     RecipeItem(id="r-27", title="Lemon Rice",
         summary="Tangy turmeric rice with peanuts and curry leaves — quick South Indian lunch.", ready_in_minutes=15, servings=3,
         ingredients=["rice", "lemon", "turmeric", "peanuts", "mustard seeds", "curry leaves", "green chili", "oil", "salt"],
         instructions="1. Cook and cool rice.\n2. Temper mustard, peanuts, curry leaves, chili.\n3. Add turmeric, mix in rice and lemon juice.",
-        nutrition=RecipeNutrition(calories=240, protein_g=5, carbs_g=38, fat_g=8), diets=["vegetarian", "gluten-free", "vegan"]),
+        nutrition=RecipeNutrition(calories=240, protein_g=5, carbs_g=38, fat_g=8), diets=["vegetarian", "gluten-free", "vegan"], meal_type="Lunch/Dinner"),
     RecipeItem(id="r-28", title="Jeera Rice",
         summary="Fragrant basmati rice infused with cumin and ghee — perfect with any curry.", ready_in_minutes=20, servings=3,
         ingredients=["basmati rice", "cumin", "ghee", "salt", "bay leaf"],
         instructions="1. Wash and soak rice.\n2. Heat ghee, add cumin and bay leaf.\n3. Add rice and water, cook until fluffy.",
-        nutrition=RecipeNutrition(calories=200, protein_g=4, carbs_g=35, fat_g=5), diets=["vegetarian", "gluten-free"]),
+        nutrition=RecipeNutrition(calories=200, protein_g=4, carbs_g=35, fat_g=5), diets=["vegetarian", "gluten-free"], meal_type="Lunch/Dinner"),
 
     # ── Desserts ──
     RecipeItem(id="r-29", title="Gulab Jamun",
         summary="Soft milk-solid dumplings soaked in fragrant rose-cardamom sugar syrup.", ready_in_minutes=40, servings=6,
         ingredients=["milk powder", "maida", "ghee", "cardamom", "sugar", "rose water", "oil", "baking soda"],
         instructions="1. Mix milk powder, maida, ghee, baking soda into soft dough.\n2. Shape small balls.\n3. Deep fry on low heat until golden.\n4. Soak in warm sugar syrup with cardamom and rose water.",
-        nutrition=RecipeNutrition(calories=320, protein_g=4, carbs_g=50, fat_g=12), diets=["vegetarian"]),
+        nutrition=RecipeNutrition(calories=320, protein_g=4, carbs_g=50, fat_g=12), diets=["vegetarian"], meal_type="Dessert"),
     RecipeItem(id="r-30", title="Kheer",
         summary="Creamy rice pudding slow-cooked in milk with cardamom, saffron, and nuts.", ready_in_minutes=40, servings=4,
         ingredients=["rice", "milk", "sugar", "cardamom", "saffron", "almonds", "cashew", "raisins", "ghee"],
         instructions="1. Boil milk, add washed rice.\n2. Cook on low heat, stirring often, until thick.\n3. Add sugar, cardamom, saffron.\n4. Garnish with fried nuts and raisins.",
-        nutrition=RecipeNutrition(calories=280, protein_g=8, carbs_g=42, fat_g=9), diets=["vegetarian", "gluten-free"]),
+        nutrition=RecipeNutrition(calories=280, protein_g=8, carbs_g=42, fat_g=9), diets=["vegetarian", "gluten-free"], meal_type="Dessert"),
 ]
 
 # ── Load extended recipes from JSON ────────────────────────────
@@ -205,6 +207,7 @@ if _extra_path.exists():
             servings=_r.get("servings"),
             ingredients=_r.get("ingredients", []),
             diets=_r.get("diets", []),
+            meal_type=_r.get("meal_type"),
             nutrition=RecipeNutrition(**_nutr) if _nutr else None,
         ))
 
@@ -353,3 +356,19 @@ def delete_saved_recipe(recipe_id: int, db: Session = Depends(get_db), current_u
     db.delete(recipe)
     db.commit()
     return {"message": "Recipe deleted", "id": recipe_id}
+
+@router.get("/daily", response_model=RecipeItem)
+def get_daily_recipe():
+    """Get the recipe of the day (changes every 24 hours). Prioritizes halal/vegetarian."""
+    # Build list of eligible recipes
+    eligible = [r for r in DEMO_RECIPES if "halal" in r.diets and "vegetarian" in r.diets]
+    if not eligible:
+        # Fallback if no halal+veg found (though we expect them)
+        eligible = DEMO_RECIPES
+        
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    # Seed random with the current date so it's the same all day
+    rng = random.Random(date_str)
+    
+    daily_recipe = rng.choice(eligible)
+    return daily_recipe

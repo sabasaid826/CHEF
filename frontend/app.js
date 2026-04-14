@@ -21,6 +21,7 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
         // Load saved data when switching to appropriate tabs
         if (page === 'saved') loadSavedRecipes();
         if (page === 'tdee') loadTDEEProfile();
+        if (page === 'kitchen') loadDailyRecipe();
     });
 });
 
@@ -101,6 +102,7 @@ function updateAuthUI() {
     const greetingName = document.getElementById('greeting-username');
 
     const tdeeNotice = document.getElementById('tdee-auth-notice');
+    const kitchenGreeting = document.getElementById('kitchen-greeting');
 
     if (isLoggedIn()) {
         const username = localStorage.getItem('chef_username') || 'User';
@@ -108,11 +110,13 @@ function updateAuthUI() {
         greeting.classList.remove('hidden');
         greetingName.textContent = `👋 ${username}`;
         if (tdeeNotice) tdeeNotice.textContent = "Calculations will be saved automatically to your profile.";
+        if (kitchenGreeting) kitchenGreeting.textContent = `Good Morning, Chef ${username}!`;
     } else {
         loginBtn.classList.remove('hidden');
         greeting.classList.add('hidden');
         greetingName.textContent = '';
         if (tdeeNotice) tdeeNotice.textContent = "Guest Mode: Calculations won't be saved. Log in to personalize your profile.";
+        if (kitchenGreeting) kitchenGreeting.textContent = `Welcome to The Kitchen`;
     }
 }
 
@@ -196,6 +200,8 @@ function logout() {
 
 // Initialize auth UI on page load
 updateAuthUI();
+// Load daily recipe for default Kitchen view
+loadDailyRecipe();
 
 function setLoading(btn, loading) {
     if (loading) {
@@ -204,6 +210,51 @@ function setLoading(btn, loading) {
     } else {
         btn.classList.remove('loading');
         btn.disabled = false;
+    }
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+// KITCHEN PAGE 
+// ═══════════════════════════════════════════════════════════════
+
+async function loadDailyRecipe() {
+    const container = document.getElementById('daily-recipe-container');
+    if (!container) return;
+    
+    try {
+        const recipe = await apiGet('/api/recipes/daily');
+        if (!recipe) throw new Error("No daily recipe found");
+        
+        const matchPct = Math.round(recipe.match_score * 100);
+        const cal = recipe.nutrition?.calories ? `${recipe.nutrition.calories} kcal` : '';
+        const time = recipe.ready_in_minutes ? `${recipe.ready_in_minutes} min` : '';
+        const servings = recipe.servings ? `${recipe.servings} servings` : '';
+        const dietTags = (recipe.diets || []).map(d =>
+            `<span class="diet-tag">${esc(d)}</span>`
+        ).join('');
+        
+        // Slightly different layout for the hero card
+        container.innerHTML = `
+            ${recipe.image_url ? `<img class="recipe-image" style="max-height:250px; object-fit:cover;" src="${esc(recipe.image_url)}" alt="${esc(recipe.title)}">` : ''}
+            <div class="recipe-info" style="padding: 20px;">
+                <div class="recipe-title" style="font-size: 1.5rem;">${esc(recipe.title)}</div>
+                ${recipe.summary ? `<div class="recipe-summary" style="margin-bottom: 15px;">${esc(recipe.summary)}</div>` : ''}
+                ${dietTags ? `<div class="diet-tags" style="margin-bottom: 15px;">${dietTags}</div>` : ''}
+                <div class="recipe-meta" style="margin-bottom: 15px;">
+                    ${time ? `<span class="recipe-meta-item">⏱️ <span class="value">${time}</span></span>` : ''}
+                    ${cal ? `<span class="recipe-meta-item">🔥 <span class="value">${cal}</span></span>` : ''}
+                    ${servings ? `<span class="recipe-meta-item">🍽️ <span class="value">${servings}</span></span>` : ''}
+                </div>
+                <div class="recipe-actions">
+                    <button class="btn-primary" onclick='showRecipeDetail(${esc(JSON.stringify(recipe), true)})'>Let's Cook</button>
+                    <button class="btn-secondary" onclick='saveRecipe(${esc(JSON.stringify(recipe), true)})'>💾 Bookmark</button>
+                </div>
+            </div>
+        `;
+    } catch (e) {
+        container.innerHTML = `<div style="padding: 20px; color: red;">Failed to load daily recipe.</div>`;
+        console.error("Daily recipe error:", e);
     }
 }
 
@@ -537,113 +588,6 @@ function renderNutritionResults(data) {
         </div>`;
 }
 
-
-// ═══════════════════════════════════════════════════════════════
-// DETECTION PAGE
-// ═══════════════════════════════════════════════════════════════
-
-const uploadArea = document.getElementById('upload-area');
-const fileInput = document.getElementById('detection-file');
-const btnDetect = document.getElementById('btn-detect');
-
-uploadArea.addEventListener('click', () => fileInput.click());
-
-uploadArea.addEventListener('dragover', e => {
-    e.preventDefault();
-    uploadArea.classList.add('dragover');
-});
-uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
-uploadArea.addEventListener('drop', e => {
-    e.preventDefault();
-    uploadArea.classList.remove('dragover');
-    if (e.dataTransfer.files.length) {
-        fileInput.files = e.dataTransfer.files;
-        onFileSelected();
-    }
-});
-
-fileInput.addEventListener('change', onFileSelected);
-
-function onFileSelected() {
-    const file = fileInput.files[0];
-    if (file) {
-        document.getElementById('selected-file').textContent = `Selected: ${file.name}`;
-        btnDetect.disabled = false;
-    }
-}
-
-btnDetect.addEventListener('click', async () => {
-    const file = fileInput.files[0];
-    if (!file) return;
-
-    setLoading(btnDetect, true);
-    try {
-        const formData = new FormData();
-        formData.append('file', file);
-
-        const res = await fetch(`${API}/api/detect/image`, { method: 'POST', body: formData });
-        if (!res.ok) throw new Error(`Detection failed (${res.status})`);
-        const data = await res.json();
-        renderDetectionResults(data);
-        showStatus(data.message, data.detected_foods.length ? 'success' : 'info');
-    } catch (e) {
-        showStatus(e.message, 'error');
-    } finally {
-        setLoading(btnDetect, false);
-    }
-});
-
-function renderDetectionResults(data) {
-    const container = document.getElementById('detection-results');
-
-    if (!data.detected_foods.length) {
-        container.innerHTML = `
-            <div class="empty-state">
-                <span class="empty-icon">🔍</span>
-                <p>${esc(data.message)}</p>
-            </div>`;
-        return;
-    }
-
-    let html = `
-        <div class="detection-card">
-            <div style="margin-bottom:16px;font-size:13px;color:var(--text-muted)">
-                Method: ${esc(data.method)}
-            </div>`;
-
-    for (const food of data.detected_foods) {
-        const pct = Math.round(food.confidence * 100);
-        html += `
-            <div class="detection-item">
-                <span style="font-size:24px">🥘</span>
-                <span class="detection-label">${esc(food.label)}</span>
-                <div class="confidence-bar">
-                    <div class="confidence-fill" style="width:${pct}%"></div>
-                </div>
-                <span class="confidence-text">${pct}%</span>
-            </div>`;
-    }
-
-    if (data.ingredients.length) {
-        html += `
-            <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border-glass)">
-                <button class="btn-secondary" onclick="searchDetectedIngredients(${esc(JSON.stringify(data.ingredients), true)})">
-                    🍽️ Find recipes with ${data.ingredients.join(', ')}
-                </button>
-            </div>`;
-    }
-
-    html += '</div>';
-    container.innerHTML = html;
-}
-
-function searchDetectedIngredients(ingredients) {
-    document.getElementById('nav-recipes').click();
-    document.getElementById('recipe-ingredients').value = ingredients.join(', ');
-    document.getElementById('btn-search').click();
-}
-
-
 // ═══════════════════════════════════════════════════════════════
 // SAVED RECIPES PAGE
 // ═══════════════════════════════════════════════════════════════
@@ -779,4 +723,124 @@ function renderTDEEResults(data) {
     document.getElementById('target-protein').textContent = data.target_protein;
     document.getElementById('target-carbs').textContent = data.target_carbs;
     document.getElementById('target-fat').textContent = data.target_fat;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// COMPUTER VISION DETECTION
+// ═══════════════════════════════════════════════════════════════
+
+let selectedFile = null;
+
+// File Selection Handler
+function handleImageUpload() {
+    const input = document.getElementById('detection-file');
+    if (input.files && input.files.length > 0) {
+        setFile(input.files[0]);
+    }
+}
+
+function setFile(file) {
+    selectedFile = file;
+    document.getElementById('selected-file-name').textContent = file.name;
+    document.getElementById('btn-detect').disabled = false;
+    document.getElementById('detection-results').classList.add('hidden');
+}
+
+// Drag & Drop Handlers
+const dropzone = document.getElementById('upload-dropzone');
+
+dropzone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropzone.style.background = 'white';
+    dropzone.style.border = '2px dashed var(--acc-color)';
+});
+
+dropzone.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+    dropzone.style.background = '';
+    dropzone.style.border = '';
+});
+
+dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropzone.style.background = '';
+    dropzone.style.border = '';
+    
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        setFile(e.dataTransfer.files[0]);
+    }
+});
+
+// Run Inference
+async function detectFood() {
+    if (!selectedFile) return;
+
+    const btn = document.getElementById('btn-detect');
+    setLoading(btn, true);
+
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+
+    try {
+        const headers = getAuthHeaders();
+        // Do not force Content-Type to application/json for formData
+        const res = await fetch(`${API}/api/detect/image`, {
+            method: 'POST',
+            headers: headers,
+            body: formData
+        });
+
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.detail || `Request failed (${res.status})`);
+        }
+
+        const data = await res.json();
+        
+        // Store for global searching
+        window._detectedIngredients = data.ingredients;
+        
+        renderDetectionResults(data);
+        showStatus(data.message, data.detected_foods.length > 0 ? 'success' : 'info');
+        
+    } catch (e) {
+        showStatus(e.message, 'error');
+    } finally {
+        setLoading(btn, false);
+    }
+}
+
+function renderDetectionResults(data) {
+    const container = document.getElementById('detection-list');
+    document.getElementById('detection-results').classList.remove('hidden');
+
+    if (!data.detected_foods || data.detected_foods.length === 0) {
+        container.innerHTML = `<p style="padding:15px; color:#666;">No food detected. Please try a clearer image of common foods (e.g. apple, pizza, sandwich).</p>`;
+        return;
+    }
+
+    let html = '';
+    for (const item of data.detected_foods) {
+        const confPct = Math.round(item.confidence * 100);
+        html += `
+            <div style="display:flex; justify-content:space-between; padding: 10px; border-bottom: 1px solid #ddd;">
+                <strong>${esc(item.label)}</strong>
+                <span style="color:var(--acc-color);">${confPct}% confident</span>
+            </div>
+        `;
+    }
+    container.innerHTML = html;
+}
+
+function searchFromDetection() {
+    if (!window._detectedIngredients || !window._detectedIngredients.length) return;
+    
+    // Switch to recipes page
+    document.getElementById('nav-recipes').click();
+    
+    // Fill in ingredients
+    document.getElementById('recipe-ingredients').value = window._detectedIngredients.join(', ');
+    
+    // Trigger search
+    document.getElementById('btn-search').click();
 }

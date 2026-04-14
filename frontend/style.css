@@ -3,6 +3,8 @@
    Warm beige theme · Food-inspired · Smooth animations
    ───────────────────────────────────────────────────────────── */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
 /* ── Reset & Base ──────────────────────────────────────────── */
 *, *::before, *::after {
     margin: 0;
@@ -11,26 +13,27 @@
 }
 
 :root {
-    --bg-primary: #faf6f0;
+    --bg-primary: #f9f7f2;
     --bg-secondary: #ffffff;
     --bg-card: rgba(255, 255, 255, 0.7);
     --bg-card-hover: rgba(255, 255, 255, 0.9);
-    --border-glass: rgba(180, 140, 100, 0.15);
-    --text-primary: #2d1810;
+    --border-glass: rgba(141, 91, 76, 0.15);
+    --text-primary: #3a261c;
     --text-secondary: #6b4c3b;
     --text-muted: #9c8577;
-    --accent-1: #c0532e;
-    --accent-2: #d97706;
-    --accent-3: #16a34a;
-    --gradient-primary: linear-gradient(135deg, #c0532e, #d97706, #e8a317);
+    --accent-1: #e07a5f;
+    --accent-2: #81b29a;
+    --accent-3: #f4f1de;
+    --gradient-primary: linear-gradient(135deg, #e07a5f, #dc6a4e, #81b29a);
     --gradient-warm: linear-gradient(135deg, #ef4444, #dc2626);
-    --gradient-success: linear-gradient(135deg, #16a34a, #15803d);
-    --shadow-glow: 0 4px 24px rgba(192, 83, 46, 0.08);
-    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+    --gradient-success: linear-gradient(135deg, #81b29a, #4a7c59);
+    --shadow-glow: 0 4px 24px rgba(224, 122, 95, 0.12);
+    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
     --radius: 16px;
     --radius-sm: 10px;
     --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Playfair Display', Georgia, serif;
 }
 
 html {
@@ -525,6 +528,13 @@ textarea::placeholder, input::placeholder {
 .recipe-info {
     flex: 1;
     min-width: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
 }
 
 .recipe-title {
@@ -1079,5 +1089,49 @@ textarea::placeholder, input::placeholder {
     }
     .nutrition-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ── Kitchen Home Page ─────────────────────────────────────── */
+.kitchen-hero-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.kitchen-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+.kitchen-main-col {
+    flex: 2;
+}
+.kitchen-side-col {
+    flex: 1;
+}
+.daily-recipe-card {
+    padding: 0;
+    overflow: hidden;
+}
+.daily-recipe-card .recipe-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 1.5rem;
+}
+.quick-action-btn {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+@media (max-width: 768px) {
+    .kitchen-layout {
+        flex-direction: column;
     }
 }

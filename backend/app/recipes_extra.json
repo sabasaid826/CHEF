@@ -16,14 +16,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 4,
       "carbs_g": 25,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-2",
@@ -43,14 +45,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 380,
       "protein_g": 14,
       "carbs_g": 50,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-3",
@@ -71,14 +75,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 290,
       "protein_g": 16,
       "carbs_g": 12,
       "fat_g": 20
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-4",
@@ -100,14 +106,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 300,
       "protein_g": 15,
       "carbs_g": 14,
       "fat_g": 21
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-5",
@@ -128,14 +136,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 380,
       "protein_g": 28,
       "carbs_g": 8,
       "fat_g": 26
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-6",
@@ -155,14 +165,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 260,
       "protein_g": 16,
       "carbs_g": 8,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-7",
@@ -183,14 +195,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 340,
       "protein_g": 14,
       "carbs_g": 30,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-8",
@@ -213,14 +227,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 150,
       "protein_g": 5,
       "carbs_g": 20,
       "fat_g": 5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-9",
@@ -242,14 +258,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 130,
       "protein_g": 5,
       "carbs_g": 10,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-10",
@@ -269,14 +287,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 3,
       "carbs_g": 10,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-11",
@@ -297,14 +317,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 110,
       "protein_g": 3,
       "carbs_g": 10,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-12",
@@ -324,14 +346,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 5,
       "carbs_g": 25,
       "fat_g": 11
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-13",
@@ -351,14 +375,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 4,
       "carbs_g": 28,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-14",
@@ -380,14 +406,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 330,
       "protein_g": 15,
       "carbs_g": 14,
       "fat_g": 25
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-15",
@@ -408,14 +436,16 @@
       "salt"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 480,
       "protein_g": 22,
       "carbs_g": 55,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-16",
@@ -435,14 +465,16 @@
       "salt"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 28,
       "carbs_g": 10,
       "fat_g": 22
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-17",
@@ -463,14 +495,16 @@
       "salt"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 400,
       "protein_g": 25,
       "carbs_g": 12,
       "fat_g": 28
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-18",
@@ -492,14 +526,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 22,
       "carbs_g": 12,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-19",
@@ -520,14 +556,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 250,
       "protein_g": 22,
       "carbs_g": 10,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-20",
@@ -548,14 +586,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 24,
       "carbs_g": 5,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-21",
@@ -575,14 +615,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 8,
       "carbs_g": 18,
       "fat_g": 9
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "x-22",
@@ -602,14 +644,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 170,
       "protein_g": 4,
       "carbs_g": 28,
       "fat_g": 5
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "x-23",
@@ -630,14 +674,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 7,
       "carbs_g": 40,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "x-24",
@@ -658,14 +704,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 250,
       "protein_g": 8,
       "carbs_g": 40,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-25",
@@ -686,14 +734,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 4,
       "carbs_g": 15,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-26",
@@ -715,14 +765,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 40,
       "protein_g": 1,
       "carbs_g": 6,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-27",
@@ -740,14 +792,16 @@
       "cardamom"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 6,
       "carbs_g": 40,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Dessert"
   },
   {
     "id": "x-28",
@@ -769,14 +823,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 24,
       "carbs_g": 8,
       "fat_g": 22
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-29",
@@ -797,14 +853,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 250,
       "protein_g": 22,
       "carbs_g": 6,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-30",
@@ -825,14 +883,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 100,
       "protein_g": 3,
       "carbs_g": 10,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-31",
@@ -852,14 +912,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 20,
       "carbs_g": 12,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-32",
@@ -879,14 +941,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 130,
       "protein_g": 4,
       "carbs_g": 16,
       "fat_g": 5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-33",
@@ -901,14 +965,16 @@
       "oil"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 5,
       "carbs_g": 35,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-34",
@@ -928,14 +994,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 250,
       "protein_g": 4,
       "carbs_g": 42,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-35",
@@ -955,14 +1023,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 22,
       "carbs_g": 8,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-36",
@@ -982,14 +1052,16 @@
       "salt"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 14,
       "carbs_g": 22,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-37",
@@ -1009,14 +1081,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 6,
       "carbs_g": 25,
       "fat_g": 5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-38",
@@ -1034,14 +1108,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 2,
       "carbs_g": 20,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-39",
@@ -1058,14 +1134,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 3,
       "carbs_g": 28,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-40",
@@ -1085,14 +1163,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 160,
       "protein_g": 8,
       "carbs_g": 25,
       "fat_g": 3
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-41",
@@ -1112,14 +1192,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 450,
       "protein_g": 12,
       "carbs_g": 55,
       "fat_g": 20
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-42",
@@ -1139,14 +1221,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 8,
       "carbs_g": 18,
       "fat_g": 11
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-43",
@@ -1166,14 +1250,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 4,
       "carbs_g": 15,
       "fat_g": 5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-44",
@@ -1192,14 +1278,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 5,
       "carbs_g": 35,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-45",
@@ -1218,14 +1306,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 5,
       "carbs_g": 22,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "x-46",
@@ -1245,14 +1335,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 9,
       "carbs_g": 45,
       "fat_g": 15
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-47",
@@ -1272,14 +1364,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 300,
       "protein_g": 12,
       "carbs_g": 38,
       "fat_g": 11
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-48",
@@ -1297,14 +1391,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 6,
       "carbs_g": 45,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-49",
@@ -1324,14 +1420,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 7,
       "carbs_g": 30,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-50",
@@ -1351,14 +1449,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 190,
       "protein_g": 8,
       "carbs_g": 18,
       "fat_g": 9
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-51",
@@ -1379,14 +1479,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 3,
       "carbs_g": 28,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-52",
@@ -1405,14 +1507,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 5,
       "carbs_g": 30,
       "fat_g": 9
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-53",
@@ -1432,14 +1536,16 @@
       "salt"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 18,
       "carbs_g": 30,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-54",
@@ -1457,14 +1563,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 6,
       "carbs_g": 32,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-55",
@@ -1483,14 +1591,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 5,
       "carbs_g": 28,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-56",
@@ -1511,14 +1621,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 160,
       "protein_g": 8,
       "carbs_g": 25,
       "fat_g": 3
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-57",
@@ -1536,14 +1648,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 150,
       "protein_g": 4,
       "carbs_g": 22,
       "fat_g": 5
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-58",
@@ -1561,14 +1675,16 @@
       "salt"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 14,
       "carbs_g": 28,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "x-59",
@@ -1587,14 +1703,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 100,
       "protein_g": 5,
       "carbs_g": 15,
       "fat_g": 2
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-60",
@@ -1614,14 +1732,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 380,
       "protein_g": 8,
       "carbs_g": 60,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-61",
@@ -1638,14 +1758,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 250,
       "protein_g": 10,
       "carbs_g": 30,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-62",
@@ -1664,14 +1786,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 7,
       "carbs_g": 12,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-63",
@@ -1691,14 +1815,16 @@
       "salt"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 12,
       "carbs_g": 45,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-64",
@@ -1717,14 +1843,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 6,
       "carbs_g": 35,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-65",
@@ -1743,14 +1871,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 4,
       "carbs_g": 25,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-66",
@@ -1770,14 +1900,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 150,
       "protein_g": 5,
       "carbs_g": 25,
       "fat_g": 3
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-67",
@@ -1795,14 +1927,16 @@
       "salt"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 80,
       "protein_g": 10,
       "carbs_g": 5,
       "fat_g": 2
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-68",
@@ -1820,14 +1954,16 @@
       "salt"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 150,
       "protein_g": 6,
       "carbs_g": 28,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-69",
@@ -1845,14 +1981,16 @@
       "salt"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 24,
       "carbs_g": 10,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-70",
@@ -1871,14 +2009,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 400,
       "protein_g": 12,
       "carbs_g": 55,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-71",
@@ -1898,14 +2038,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "keto"
+      "keto",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 5,
       "carbs_g": 8,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-72",
@@ -1923,14 +2065,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 60,
       "protein_g": 3,
       "carbs_g": 4,
       "fat_g": 3
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-73",
@@ -1950,14 +2094,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 12,
       "carbs_g": 10,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-74",
@@ -1978,14 +2124,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 12,
       "carbs_g": 40,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-75",
@@ -2004,14 +2152,16 @@
       "salt"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 18,
       "carbs_g": 35,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-76",
@@ -2030,14 +2180,16 @@
       "salt"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 14,
       "carbs_g": 20,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-77",
@@ -2057,14 +2209,16 @@
       "vegetarian",
       "vegan",
       "gluten-free",
-      "keto"
+      "keto",
+      "halal"
     ],
     "nutrition": {
       "calories": 160,
       "protein_g": 2,
       "carbs_g": 9,
       "fat_g": 15
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-78",
@@ -2083,14 +2237,16 @@
       "salt"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 250,
       "protein_g": 16,
       "carbs_g": 22,
       "fat_g": 11
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-79",
@@ -2108,14 +2264,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 4,
       "carbs_g": 22,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-80",
@@ -2135,14 +2293,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 5,
       "carbs_g": 18,
       "fat_g": 3
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-81",
@@ -2160,14 +2320,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 8,
       "carbs_g": 45,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-82",
@@ -2185,14 +2347,16 @@
       "cream"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 290,
       "protein_g": 5,
       "carbs_g": 30,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-83",
@@ -2210,14 +2374,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 4,
       "carbs_g": 40,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-84",
@@ -2234,14 +2400,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 6,
       "carbs_g": 28,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-85",
@@ -2259,14 +2427,16 @@
       "cardamom"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 400,
       "protein_g": 6,
       "carbs_g": 42,
       "fat_g": 24
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-86",
@@ -2286,14 +2456,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 80,
       "protein_g": 3,
       "carbs_g": 12,
       "fat_g": 2
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-87",
@@ -2310,14 +2482,16 @@
       "lemon"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 380,
       "protein_g": 18,
       "carbs_g": 35,
       "fat_g": 20
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-88",
@@ -2335,14 +2509,16 @@
       "salt"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 10,
       "carbs_g": 40,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-89",
@@ -2368,7 +2544,8 @@
       "protein_g": 10,
       "carbs_g": 22,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-90",
@@ -2386,14 +2563,16 @@
       "salt"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 10,
       "carbs_g": 15,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-91",
@@ -2414,14 +2593,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 150,
       "protein_g": 3,
       "carbs_g": 22,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-92",
@@ -2441,14 +2622,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 80,
       "protein_g": 3,
       "carbs_g": 10,
       "fat_g": 3
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-93",
@@ -2463,14 +2646,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 3,
       "carbs_g": 25,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-94",
@@ -2488,14 +2673,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 130,
       "protein_g": 3,
       "carbs_g": 28,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-95",
@@ -2512,14 +2699,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 150,
       "protein_g": 7,
       "carbs_g": 25,
       "fat_g": 2
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-96",
@@ -2535,14 +2724,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 25,
       "protein_g": 0.5,
       "carbs_g": 5,
       "fat_g": 0.2
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-97",
@@ -2560,14 +2751,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 60,
       "protein_g": 1,
       "carbs_g": 5,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-98",
@@ -2585,14 +2778,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 3,
       "carbs_g": 38,
       "fat_g": 5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-99",
@@ -2610,14 +2805,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 4,
       "carbs_g": 40,
       "fat_g": 5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-100",
@@ -2633,14 +2830,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 110,
       "protein_g": 3,
       "carbs_g": 20,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-101",
@@ -2666,7 +2865,8 @@
       "protein_g": 18,
       "carbs_g": 40,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-102",
@@ -2685,14 +2885,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 160,
       "protein_g": 4,
       "carbs_g": 30,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-103",
@@ -2712,14 +2914,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "keto"
+      "keto",
+      "halal"
     ],
     "nutrition": {
       "calories": 250,
       "protein_g": 12,
       "carbs_g": 6,
       "fat_g": 20
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-104",
@@ -2735,14 +2939,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 400,
       "protein_g": 14,
       "carbs_g": 45,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-105",
@@ -2760,14 +2966,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 2,
       "carbs_g": 25,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "x-106",
@@ -2787,14 +2995,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 90,
       "protein_g": 2,
       "carbs_g": 14,
       "fat_g": 3
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-107",
@@ -2816,14 +3026,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 7,
       "carbs_g": 20,
       "fat_g": 3
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-108",
@@ -2840,14 +3052,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 4,
       "carbs_g": 38,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Dessert"
   },
   {
     "id": "x-109",
@@ -2863,14 +3077,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 260,
       "protein_g": 6,
       "carbs_g": 48,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "x-110",
@@ -2897,7 +3113,8 @@
       "protein_g": 22,
       "carbs_g": 5,
       "fat_g": 24
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-111",
@@ -2919,14 +3136,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 3,
       "carbs_g": 15,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-113",
@@ -2948,14 +3167,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 160,
       "protein_g": 5,
       "carbs_g": 25,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-115",
@@ -2975,14 +3196,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 10,
       "carbs_g": 28,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "xx-117",
@@ -3003,14 +3226,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 6,
       "carbs_g": 35,
       "fat_g": 15
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-119",
@@ -3033,14 +3258,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 5,
       "carbs_g": 20,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-121",
@@ -3062,14 +3289,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 340,
       "protein_g": 8,
       "carbs_g": 22,
       "fat_g": 26
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-123",
@@ -3090,14 +3319,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 420,
       "protein_g": 12,
       "carbs_g": 35,
       "fat_g": 30
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-125",
@@ -3116,14 +3347,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 260,
       "protein_g": 10,
       "carbs_g": 28,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "xx-127",
@@ -3144,14 +3377,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 6,
       "carbs_g": 25,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-129",
@@ -3172,14 +3407,16 @@
     ],
     "diets": [
       "vegetarian",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 300,
       "protein_g": 24,
       "carbs_g": 18,
       "fat_g": 15
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-131",
@@ -3201,14 +3438,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 4,
       "carbs_g": 18,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-133",
@@ -3230,14 +3469,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 450,
       "protein_g": 32,
       "carbs_g": 14,
       "fat_g": 28
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-135",
@@ -3258,14 +3499,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 480,
       "protein_g": 35,
       "carbs_g": 8,
       "fat_g": 34
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-137",
@@ -3285,14 +3528,16 @@
       "salt"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 28,
       "carbs_g": 6,
       "fat_g": 20
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-139",
@@ -3312,14 +3557,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 14,
       "carbs_g": 8,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-141",
@@ -3340,14 +3587,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 580,
       "protein_g": 28,
       "carbs_g": 65,
       "fat_g": 22
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-143",
@@ -3366,14 +3615,16 @@
       "salt"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 640,
       "protein_g": 32,
       "carbs_g": 60,
       "fat_g": 30
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-145",
@@ -3394,14 +3645,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 6,
       "carbs_g": 52,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-147",
@@ -3419,14 +3672,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 4,
       "carbs_g": 45,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-149",
@@ -3446,14 +3701,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 8,
       "carbs_g": 38,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-151",
@@ -3475,14 +3732,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 6,
       "carbs_g": 48,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-153",
@@ -3503,14 +3762,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 260,
       "protein_g": 5,
       "carbs_g": 45,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-155",
@@ -3530,14 +3791,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 8,
       "carbs_g": 48,
       "fat_g": 15
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-157",
@@ -3557,14 +3820,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 6,
       "carbs_g": 50,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-159",
@@ -3586,14 +3851,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 5,
       "carbs_g": 35,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-161",
@@ -3613,14 +3880,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 6,
       "carbs_g": 38,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-163",
@@ -3641,14 +3910,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 7,
       "carbs_g": 45,
       "fat_g": 9
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-165",
@@ -3669,14 +3940,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 260,
       "protein_g": 6,
       "carbs_g": 42,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-167",
@@ -3696,14 +3969,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 12,
       "carbs_g": 55,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-169",
@@ -3721,14 +3996,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 3,
       "carbs_g": 35,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-171",
@@ -3745,14 +4022,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 4,
       "carbs_g": 45,
       "fat_g": 2
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-173",
@@ -3773,14 +4052,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 28,
       "carbs_g": 10,
       "fat_g": 24
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "xx-175",
@@ -3801,14 +4082,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 14,
       "carbs_g": 12,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-177",
@@ -3830,14 +4113,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 260,
       "protein_g": 16,
       "carbs_g": 10,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-179",
@@ -3857,14 +4142,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 6,
       "carbs_g": 22,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "xx-181",
@@ -3885,14 +4172,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 5,
       "carbs_g": 35,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "xx-183",
@@ -3910,14 +4199,16 @@
       "oil"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 3,
       "carbs_g": 65,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Dessert"
   },
   {
     "id": "xx-185",
@@ -3935,14 +4226,16 @@
       "saffron"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 6,
       "carbs_g": 55,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Dessert"
   },
   {
     "id": "xx-187",
@@ -3961,14 +4254,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 8,
       "carbs_g": 32,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-189",
@@ -3987,14 +4282,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 260,
       "protein_g": 7,
       "carbs_g": 40,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Dessert"
   },
   {
     "id": "xx-191",
@@ -4013,14 +4310,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 6,
       "carbs_g": 45,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Dessert"
   },
   {
     "id": "xx-193",
@@ -4037,14 +4336,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 5,
       "carbs_g": 30,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-195",
@@ -4062,14 +4363,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 4,
       "carbs_g": 45,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-197",
@@ -4087,14 +4390,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 5,
       "carbs_g": 30,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-199",
@@ -4111,14 +4416,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 6,
       "carbs_g": 42,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-201",
@@ -4135,14 +4442,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 6,
       "carbs_g": 40,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Beverage"
   },
   {
     "id": "xx-203",
@@ -4162,14 +4471,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 6,
       "carbs_g": 25,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-205",
@@ -4189,14 +4500,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 80,
       "protein_g": 3,
       "carbs_g": 12,
       "fat_g": 2
-    }
+    },
+    "meal_type": "Beverage"
   },
   {
     "id": "xx-207",
@@ -4211,14 +4524,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 5,
       "carbs_g": 28,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-209",
@@ -4236,14 +4551,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 310,
       "protein_g": 8,
       "carbs_g": 48,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-211",
@@ -4261,14 +4578,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 8,
       "carbs_g": 46,
       "fat_g": 11
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-213",
@@ -4283,14 +4602,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 4,
       "carbs_g": 25,
       "fat_g": 0.5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-215",
@@ -4309,14 +4630,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 10,
       "carbs_g": 40,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-217",
@@ -4334,14 +4657,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 7,
       "carbs_g": 48,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-219",
@@ -4360,14 +4685,16 @@
     ],
     "diets": [
       "vegetarian",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 15,
       "carbs_g": 42,
       "fat_g": 15
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-221",
@@ -4386,14 +4713,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 260,
       "protein_g": 8,
       "carbs_g": 40,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-223",
@@ -4409,14 +4738,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 160,
       "protein_g": 5,
       "carbs_g": 32,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-225",
@@ -4431,14 +4762,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 6,
       "carbs_g": 42,
       "fat_g": 11
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-227",
@@ -4455,14 +4788,16 @@
       "oil"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 8,
       "carbs_g": 52,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-229",
@@ -4483,14 +4818,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 420,
       "protein_g": 16,
       "carbs_g": 38,
       "fat_g": 24
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-231",
@@ -4512,14 +4849,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 18,
       "carbs_g": 55,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-233",
@@ -4542,14 +4881,16 @@
       "vegetarian",
       "vegan",
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 14,
       "carbs_g": 42,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-235",
@@ -4568,14 +4909,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 7,
       "carbs_g": 24,
       "fat_g": 2
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-237",
@@ -4595,14 +4938,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 650,
       "protein_g": 18,
       "carbs_g": 90,
       "fat_g": 26
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-239",
@@ -4622,14 +4967,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 380,
       "protein_g": 12,
       "carbs_g": 45,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-241",
@@ -4648,14 +4995,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 4,
       "carbs_g": 40,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-243",
@@ -4675,14 +5024,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 6,
       "carbs_g": 48,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "xx-245",
@@ -4702,14 +5053,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 7,
       "carbs_g": 45,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "xx-247",
@@ -4727,14 +5080,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 6,
       "carbs_g": 42,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-249",
@@ -4752,14 +5107,16 @@
       "ghee"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 7,
       "carbs_g": 45,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-251",
@@ -4779,14 +5136,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 4,
       "carbs_g": 55,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-253",
@@ -4805,14 +5164,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 300,
       "protein_g": 6,
       "carbs_g": 48,
       "fat_g": 11
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-255",
@@ -4832,14 +5193,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 450,
       "protein_g": 10,
       "carbs_g": 65,
       "fat_g": 20
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "xx-257",
@@ -4860,14 +5223,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 290,
       "protein_g": 15,
       "carbs_g": 18,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-259",
@@ -4889,14 +5254,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 270,
       "protein_g": 16,
       "carbs_g": 12,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-261",
@@ -4916,14 +5283,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 380,
       "protein_g": 14,
       "carbs_g": 15,
       "fat_g": 30
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-263",
@@ -4945,14 +5314,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 160,
       "protein_g": 8,
       "carbs_g": 15,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-265",
@@ -4974,14 +5345,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 6,
       "carbs_g": 30,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-267",
@@ -5002,14 +5375,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 5,
       "carbs_g": 20,
       "fat_g": 5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-269",
@@ -5030,14 +5405,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 5,
       "carbs_g": 18,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-271",
@@ -5058,14 +5435,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 4,
       "carbs_g": 25,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-273",
@@ -5086,14 +5465,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 3,
       "carbs_g": 14,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-275",
@@ -5113,14 +5494,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 90,
       "protein_g": 2,
       "carbs_g": 12,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-277",
@@ -5140,14 +5523,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 80,
       "protein_g": 2,
       "carbs_g": 10,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-279",
@@ -5168,14 +5553,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 150,
       "protein_g": 4,
       "carbs_g": 15,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-281",
@@ -5196,14 +5583,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 4,
       "carbs_g": 45,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-283",
@@ -5223,14 +5612,16 @@
     ],
     "diets": [
       "vegetarian",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 24,
       "carbs_g": 22,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-285",
@@ -5251,14 +5642,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 2,
       "carbs_g": 18,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-287",
@@ -5279,14 +5672,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 5,
       "carbs_g": 32,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-289",
@@ -5306,14 +5701,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 10,
       "carbs_g": 28,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-291",
@@ -5335,14 +5732,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 14,
       "carbs_g": 30,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-293",
@@ -5360,14 +5759,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 550,
       "protein_g": 15,
       "carbs_g": 75,
       "fat_g": 22
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-295",
@@ -5384,14 +5785,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 210,
       "protein_g": 5,
       "carbs_g": 38,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-297",
@@ -5411,14 +5814,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 8,
       "carbs_g": 18,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-299",
@@ -5440,14 +5845,16 @@
       "vegetarian",
       "vegan",
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 260,
       "protein_g": 14,
       "carbs_g": 40,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-301",
@@ -5465,14 +5872,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 380,
       "protein_g": 8,
       "carbs_g": 62,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-303",
@@ -5492,14 +5901,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 26,
       "carbs_g": 10,
       "fat_g": 24
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-305",
@@ -5519,14 +5930,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 420,
       "protein_g": 24,
       "carbs_g": 15,
       "fat_g": 32
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-307",
@@ -5543,14 +5956,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 250,
       "protein_g": 6,
       "carbs_g": 38,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-309",
@@ -5567,14 +5982,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 8,
       "carbs_g": 25,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-311",
@@ -5594,14 +6011,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 210,
       "protein_g": 6,
       "carbs_g": 42,
       "fat_g": 2
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-313",
@@ -5618,14 +6037,16 @@
       "oil"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 380,
       "protein_g": 5,
       "carbs_g": 55,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-315",
@@ -5644,14 +6065,16 @@
       "salt"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 420,
       "protein_g": 12,
       "carbs_g": 65,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-317",
@@ -5670,14 +6093,16 @@
       "salt"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 550,
       "protein_g": 30,
       "carbs_g": 65,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-319",
@@ -5696,14 +6121,16 @@
       "onion"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 520,
       "protein_g": 28,
       "carbs_g": 42,
       "fat_g": 26
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-321",
@@ -5722,14 +6149,16 @@
       "ginger"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 16,
       "carbs_g": 55,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-323",
@@ -5754,7 +6183,8 @@
       "protein_g": 18,
       "carbs_g": 35,
       "fat_g": 15
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-325",
@@ -5774,14 +6204,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 420,
       "protein_g": 26,
       "carbs_g": 65,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-327",
@@ -5806,7 +6238,8 @@
       "protein_g": 35,
       "carbs_g": 55,
       "fat_g": 32
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-329",
@@ -5825,14 +6258,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 12,
       "carbs_g": 48,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-331",
@@ -5850,14 +6285,16 @@
       "rice"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 450,
       "protein_g": 28,
       "carbs_g": 65,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-333",
@@ -5879,14 +6316,16 @@
       "vegetarian",
       "vegan",
       "gluten-free",
-      "low-carb"
+      "low-carb",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 4,
       "carbs_g": 22,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-335",
@@ -5904,14 +6343,16 @@
       "maple syrup"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 450,
       "protein_g": 10,
       "carbs_g": 85,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Dessert"
   },
   {
     "id": "xx-337",
@@ -5931,14 +6372,16 @@
     ],
     "diets": [
       "vegetarian",
-      "vegan"
+      "vegan",
+      "halal"
     ],
     "nutrition": {
       "calories": 160,
       "protein_g": 4,
       "carbs_g": 22,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-339",
@@ -5963,7 +6406,8 @@
       "protein_g": 25,
       "carbs_g": 75,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-341",
@@ -5988,7 +6432,8 @@
       "protein_g": 22,
       "carbs_g": 45,
       "fat_g": 34
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-343",
@@ -6005,14 +6450,16 @@
       "milk"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 300,
       "protein_g": 6,
       "carbs_g": 32,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-345",
@@ -6031,14 +6478,16 @@
       "parmesan"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 10,
       "carbs_g": 35,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-347",
@@ -6058,14 +6507,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 420,
       "protein_g": 10,
       "carbs_g": 65,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-349",
@@ -6085,14 +6536,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 12,
       "carbs_g": 45,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-351",
@@ -6113,14 +6566,16 @@
     "diets": [
       "gluten-free",
       "low-carb",
-      "paleo"
+      "paleo",
+      "halal"
     ],
     "nutrition": {
       "calories": 260,
       "protein_g": 28,
       "carbs_g": 15,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-353",
@@ -6139,14 +6594,16 @@
       "spices"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 520,
       "protein_g": 35,
       "carbs_g": 45,
       "fat_g": 22
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-355",
@@ -6165,14 +6622,16 @@
       "bell pepper"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 580,
       "protein_g": 35,
       "carbs_g": 75,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-357",
@@ -6197,7 +6656,8 @@
       "protein_g": 32,
       "carbs_g": 42,
       "fat_g": 30
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-359",
@@ -6214,14 +6674,16 @@
       "salt"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 850,
       "protein_g": 45,
       "carbs_g": 45,
       "fat_g": 55
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-361",
@@ -6240,14 +6702,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 4,
       "carbs_g": 30,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-363",
@@ -6264,14 +6728,16 @@
       "thyme"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 15,
       "carbs_g": 35,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-365",
@@ -6290,14 +6756,16 @@
       "vegetarian",
       "vegan",
       "gluten-free",
-      "low-carb"
+      "low-carb",
+      "halal"
     ],
     "nutrition": {
       "calories": 80,
       "protein_g": 6,
       "carbs_g": 8,
       "fat_g": 3
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-367",
@@ -6316,14 +6784,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 450,
       "protein_g": 35,
       "carbs_g": 42,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-369",
@@ -6341,14 +6811,16 @@
       "sour cream"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 520,
       "protein_g": 28,
       "carbs_g": 55,
       "fat_g": 22
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-371",
@@ -6366,14 +6838,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 60,
       "protein_g": 1,
       "carbs_g": 14,
       "fat_g": 0.5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-373",
@@ -6392,14 +6866,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 6,
       "carbs_g": 65,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Beverage"
   },
   {
     "id": "xx-375",
@@ -6417,14 +6893,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 4,
       "carbs_g": 12,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Snack"
   },
   {
     "id": "xx-377",
@@ -6441,14 +6919,16 @@
       "parsley"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 480,
       "protein_g": 12,
       "carbs_g": 65,
       "fat_g": 20
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-379",
@@ -6465,14 +6945,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 5,
       "carbs_g": 62,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-381",
@@ -6490,14 +6972,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 450,
       "protein_g": 12,
       "carbs_g": 68,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-383",
@@ -6514,14 +6998,16 @@
       "cinnamon"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 4,
       "carbs_g": 45,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-385",
@@ -6537,14 +7023,16 @@
       "egg wash"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 5,
       "carbs_g": 42,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-387",
@@ -6562,14 +7050,16 @@
     "diets": [
       "gluten-free",
       "high-protein",
-      "paleo"
+      "paleo",
+      "halal"
     ],
     "nutrition": {
       "calories": 420,
       "protein_g": 45,
       "carbs_g": 0,
       "fat_g": 26
-    }
+    },
+    "meal_type": "Beverage"
   },
   {
     "id": "xx-389",
@@ -6585,14 +7075,16 @@
       "spicy aioli"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 380,
       "protein_g": 35,
       "carbs_g": 35,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-391",
@@ -6610,14 +7102,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 90,
       "protein_g": 1,
       "carbs_g": 22,
       "fat_g": 0
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-393",
@@ -6635,14 +7129,16 @@
     "diets": [
       "vegetarian",
       "gluten-free",
-      "keto"
+      "keto",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 12,
       "carbs_g": 5,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Breakfast"
   },
   {
     "id": "xx-395",
@@ -6659,14 +7155,16 @@
       "butter"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 520,
       "protein_g": 24,
       "carbs_g": 60,
       "fat_g": 22
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-397",
@@ -6683,14 +7181,16 @@
       "bread"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 18,
       "carbs_g": 12,
       "fat_g": 24
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-399",
@@ -6707,14 +7207,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 160,
       "protein_g": 6,
       "carbs_g": 14,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Beverage"
   },
   {
     "id": "xx-401",
@@ -6731,14 +7233,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 6,
       "carbs_g": 32,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-403",
@@ -6757,14 +7261,16 @@
       "vegetarian",
       "vegan",
       "gluten-free",
-      "low-carb"
+      "low-carb",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 3,
       "carbs_g": 12,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-405",
@@ -6779,14 +7285,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 1,
       "carbs_g": 28,
       "fat_g": 0
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-407",
@@ -6804,14 +7312,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 6,
       "carbs_g": 25,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xx-409",
@@ -6829,14 +7339,16 @@
     "diets": [
       "gluten-free",
       "high-protein",
-      "paleo"
+      "paleo",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 42,
       "carbs_g": 0,
       "fat_g": 16
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-261",
@@ -6855,14 +7367,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 380,
       "protein_g": 12,
       "carbs_g": 58,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-263",
@@ -6881,14 +7395,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 3,
       "carbs_g": 12,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-265",
@@ -6907,14 +7423,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 28,
       "carbs_g": 8,
       "fat_g": 22
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-267",
@@ -6931,14 +7449,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 120,
       "protein_g": 1,
       "carbs_g": 28,
       "fat_g": 0.5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-269",
@@ -6956,14 +7476,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 6,
       "carbs_g": 45,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-271",
@@ -6980,14 +7502,16 @@
       "oil"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 3,
       "carbs_g": 35,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-273",
@@ -7004,14 +7528,16 @@
       "oil"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 4,
       "carbs_g": 52,
       "fat_g": 11
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-275",
@@ -7030,14 +7556,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 450,
       "protein_g": 15,
       "carbs_g": 65,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-277",
@@ -7054,14 +7582,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 3,
       "carbs_g": 40,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-279",
@@ -7079,14 +7609,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 4,
       "carbs_g": 12,
       "fat_g": 14
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-281",
@@ -7104,14 +7636,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 8,
       "carbs_g": 35,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-283",
@@ -7130,14 +7664,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 80,
       "protein_g": 0.5,
       "carbs_g": 15,
       "fat_g": 2
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-285",
@@ -7156,14 +7692,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 420,
       "protein_g": 28,
       "carbs_g": 12,
       "fat_g": 30
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-287",
@@ -7181,14 +7719,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 22,
       "carbs_g": 5,
       "fat_g": 15
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-289",
@@ -7204,14 +7744,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 3,
       "carbs_g": 30,
       "fat_g": 0.5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-291",
@@ -7229,14 +7771,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 220,
       "protein_g": 24,
       "carbs_g": 6,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-293",
@@ -7253,14 +7797,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 5,
       "carbs_g": 32,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-295",
@@ -7277,14 +7823,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 160,
       "protein_g": 4,
       "carbs_g": 35,
       "fat_g": 0.5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-297",
@@ -7308,7 +7856,8 @@
       "protein_g": 22,
       "carbs_g": 2,
       "fat_g": 28
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-299",
@@ -7332,7 +7881,8 @@
       "protein_g": 20,
       "carbs_g": 10,
       "fat_g": 24
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-301",
@@ -7348,14 +7898,16 @@
       "coriander"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 12,
       "carbs_g": 18,
       "fat_g": 2
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-303",
@@ -7370,14 +7922,16 @@
       "roasted fish"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 60,
       "protein_g": 4,
       "carbs_g": 8,
       "fat_g": 1
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-305",
@@ -7395,14 +7949,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 10,
       "carbs_g": 32,
       "fat_g": 0.5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-307",
@@ -7425,7 +7981,8 @@
       "protein_g": 6,
       "carbs_g": 12,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-309",
@@ -7442,14 +7999,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 22,
       "carbs_g": 50,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-311",
@@ -7466,14 +8025,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 240,
       "protein_g": 3,
       "carbs_g": 42,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-313",
@@ -7491,14 +8052,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 24,
       "carbs_g": 5,
       "fat_g": 10
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-315",
@@ -7516,14 +8079,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 450,
       "protein_g": 28,
       "carbs_g": 8,
       "fat_g": 35
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-317",
@@ -7541,14 +8106,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 140,
       "protein_g": 6,
       "carbs_g": 20,
       "fat_g": 4
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-319",
@@ -7572,7 +8139,8 @@
       "protein_g": 24,
       "carbs_g": 6,
       "fat_g": 30
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-321",
@@ -7590,14 +8158,16 @@
       "oyster sauce"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 450,
       "protein_g": 24,
       "carbs_g": 65,
       "fat_g": 12
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-323",
@@ -7615,14 +8185,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 420,
       "protein_g": 26,
       "carbs_g": 15,
       "fat_g": 30
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-325",
@@ -7639,14 +8211,16 @@
       "peanuts"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 550,
       "protein_g": 32,
       "carbs_g": 25,
       "fat_g": 38
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-327",
@@ -7664,14 +8238,16 @@
       "fish sauce"
     ],
     "diets": [
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 8,
       "carbs_g": 22,
       "fat_g": 7
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-329",
@@ -7689,14 +8265,16 @@
       "hoisin"
     ],
     "diets": [
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 480,
       "protein_g": 32,
       "carbs_g": 18,
       "fat_g": 30
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-331",
@@ -7721,7 +8299,8 @@
       "protein_g": 22,
       "carbs_g": 12,
       "fat_g": 24
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-333",
@@ -7746,7 +8325,8 @@
       "protein_g": 15,
       "carbs_g": 25,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-335",
@@ -7764,14 +8344,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 650,
       "protein_g": 35,
       "carbs_g": 25,
       "fat_g": 45
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-337",
@@ -7796,7 +8378,8 @@
       "protein_g": 38,
       "carbs_g": 12,
       "fat_g": 32
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-339",
@@ -7821,7 +8404,8 @@
       "protein_g": 42,
       "carbs_g": 15,
       "fat_g": 35
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-341",
@@ -7839,14 +8423,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 70,
       "protein_g": 1,
       "carbs_g": 16,
       "fat_g": 0.5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-343",
@@ -7863,14 +8449,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 6,
       "carbs_g": 52,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Beverage"
   },
   {
     "id": "xxx-345",
@@ -7886,14 +8474,16 @@
       "vanilla"
     ],
     "diets": [
-      "vegetarian"
+      "vegetarian",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 4,
       "carbs_g": 45,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxx-347",
@@ -7911,14 +8501,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 180,
       "protein_g": 1,
       "carbs_g": 45,
       "fat_g": 0.2
-    }
+    },
+    "meal_type": "Beverage"
   },
   {
     "id": "xxx-349",
@@ -7935,14 +8527,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 150,
       "protein_g": 3,
       "carbs_g": 35,
       "fat_g": 0.5
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxxx-306",
@@ -7960,14 +8554,16 @@
     "diets": [
       "vegetarian",
       "vegan",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 15,
       "carbs_g": 38,
       "fat_g": 6
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxxx-308",
@@ -7985,14 +8581,16 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 350,
       "protein_g": 28,
       "carbs_g": 12,
       "fat_g": 22
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxxx-310",
@@ -8009,14 +8607,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 200,
       "protein_g": 10,
       "carbs_g": 28,
       "fat_g": 8
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxxx-312",
@@ -8034,14 +8634,16 @@
     ],
     "diets": [
       "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "halal"
     ],
     "nutrition": {
       "calories": 280,
       "protein_g": 16,
       "carbs_g": 14,
       "fat_g": 18
-    }
+    },
+    "meal_type": "Lunch/Dinner"
   },
   {
     "id": "xxxx-314",
@@ -8058,13 +8660,551 @@
     ],
     "diets": [
       "gluten-free",
-      "high-protein"
+      "high-protein",
+      "halal"
     ],
     "nutrition": {
       "calories": 320,
       "protein_g": 24,
       "carbs_g": 8,
       "fat_g": 22
-    }
+    },
+    "meal_type": "Lunch/Dinner"
+  },
+  {
+    "id": "dr-1",
+    "title": "Masala Chai",
+    "summary": "Strong Indian tea brewed with aromatic spices and milk.",
+    "ready_in_minutes": 10,
+    "servings": 2,
+    "ingredients": [
+      "tea leaves",
+      "milk",
+      "water",
+      "ginger",
+      "cardamom",
+      "cinnamon",
+      "sugar"
+    ],
+    "diets": [
+      "vegetarian",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 90,
+      "protein_g": 3,
+      "carbs_g": 12,
+      "fat_g": 3
+    },
+    "meal_type": "Beverage"
+  },
+  {
+    "id": "dr-2",
+    "title": "Mango Lassi",
+    "summary": "Creamy yogurt-based drink blended with sweet mango pulp.",
+    "ready_in_minutes": 5,
+    "servings": 2,
+    "ingredients": [
+      "mango pulp",
+      "curd",
+      "milk",
+      "sugar",
+      "cardamom"
+    ],
+    "diets": [
+      "vegetarian",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 180,
+      "protein_g": 6,
+      "carbs_g": 30,
+      "fat_g": 4
+    },
+    "meal_type": "Beverage"
+  },
+  {
+    "id": "dr-3",
+    "title": "Filter Coffee",
+    "summary": "South Indian style frothed coffee brewed in a traditional filter.",
+    "ready_in_minutes": 15,
+    "servings": 2,
+    "ingredients": [
+      "coffee powder",
+      "milk",
+      "water",
+      "sugar"
+    ],
+    "diets": [
+      "vegetarian",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 110,
+      "protein_g": 4,
+      "carbs_g": 15,
+      "fat_g": 3
+    },
+    "meal_type": "Beverage"
+  },
+  {
+    "id": "dr-4",
+    "title": "Kokum Sharbat",
+    "summary": "Refreshing coastal drink made from mangosteen fruit extract.",
+    "ready_in_minutes": 5,
+    "servings": 2,
+    "ingredients": [
+      "kokum extract",
+      "water",
+      "sugar",
+      "roasted cumin powder",
+      "black salt"
+    ],
+    "diets": [
+      "vegetarian",
+      "vegan",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 60,
+      "protein_g": 0,
+      "carbs_g": 15,
+      "fat_g": 0
+    },
+    "meal_type": "Beverage"
+  },
+  {
+    "id": "dr-5",
+    "title": "Thandai",
+    "summary": "Cooling festive drink with nuts, melon seeds, and rose petals.",
+    "ready_in_minutes": 20,
+    "servings": 4,
+    "ingredients": [
+      "milk",
+      "almonds",
+      "cashews",
+      "melon seeds",
+      "fennel",
+      "pepper",
+      "rose petals",
+      "sugar",
+      "saffron"
+    ],
+    "diets": [
+      "vegetarian",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 220,
+      "protein_g": 8,
+      "carbs_g": 25,
+      "fat_g": 10
+    },
+    "meal_type": "Beverage"
+  },
+  {
+    "id": "dr-6",
+    "title": "Iced Matcha Latte",
+    "summary": "Energy-boosting green tea latte served over ice.",
+    "ready_in_minutes": 5,
+    "servings": 1,
+    "ingredients": [
+      "matcha powder",
+      "oat milk",
+      "honey",
+      "ice cubes"
+    ],
+    "diets": [
+      "vegetarian",
+      "vegan",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 120,
+      "protein_g": 3,
+      "carbs_g": 18,
+      "fat_g": 4
+    },
+    "meal_type": "Beverage"
+  },
+  {
+    "id": "dr-7",
+    "title": "Green Detox Juice",
+    "summary": "Cleansing blend of kale, green apple, and cucumber.",
+    "ready_in_minutes": 10,
+    "servings": 2,
+    "ingredients": [
+      "kale",
+      "green apple",
+      "cucumber",
+      "lemon",
+      "ginger"
+    ],
+    "diets": [
+      "vegetarian",
+      "vegan",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 80,
+      "protein_g": 2,
+      "carbs_g": 18,
+      "fat_g": 0
+    },
+    "meal_type": "Beverage"
+  },
+  {
+    "id": "dr-8",
+    "title": "Berry Blast Smoothie",
+    "summary": "Mixed berry smoothie with yogurt and chia seeds.",
+    "ready_in_minutes": 5,
+    "servings": 1,
+    "ingredients": [
+      "blueberries",
+      "strawberries",
+      "yogurt",
+      "honey",
+      "chia seeds"
+    ],
+    "diets": [
+      "vegetarian",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 210,
+      "protein_g": 8,
+      "carbs_g": 35,
+      "fat_g": 5
+    },
+    "meal_type": "Beverage"
+  },
+  {
+    "id": "dr-9",
+    "title": "Banana Oat Shake",
+    "summary": "Filling breakfast shake with oats and honey.",
+    "ready_in_minutes": 5,
+    "servings": 1,
+    "ingredients": [
+      "banana",
+      "oats",
+      "milk",
+      "honey",
+      "peanut butter"
+    ],
+    "diets": [
+      "vegetarian",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein_g": 12,
+      "carbs_g": 55,
+      "fat_g": 10
+    },
+    "meal_type": "Beverage"
+  },
+  {
+    "id": "dr-10",
+    "title": "Jal Jeera",
+    "summary": "Spicy and tangy Indian lemonade with cumin and mint.",
+    "ready_in_minutes": 10,
+    "servings": 4,
+    "ingredients": [
+      "mint",
+      "coriander",
+      "ginger",
+      "lemon",
+      "cumin",
+      "black salt",
+      "amchur",
+      "water"
+    ],
+    "diets": [
+      "vegetarian",
+      "vegan",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 20,
+      "protein_g": 0,
+      "carbs_g": 5,
+      "fat_g": 0
+    },
+    "meal_type": "Beverage"
+  },
+  {
+    "id": "si-1",
+    "title": "Garlic Naan",
+    "summary": "Leavened flatbread topped with garlic and butter.",
+    "ready_in_minutes": 25,
+    "servings": 4,
+    "ingredients": [
+      "maida",
+      "garlic",
+      "butter",
+      "yeast",
+      "curd",
+      "salt"
+    ],
+    "diets": [
+      "vegetarian",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 210,
+      "protein_g": 6,
+      "carbs_g": 35,
+      "fat_g": 6
+    },
+    "meal_type": "Side"
+  },
+  {
+    "id": "si-2",
+    "title": "Aloo Paratha",
+    "summary": "Whole wheat flatbread stuffed with spiced mashed potatoes.",
+    "ready_in_minutes": 30,
+    "servings": 3,
+    "ingredients": [
+      "atta",
+      "potato",
+      "onion",
+      "green chili",
+      "cumin",
+      "ghee",
+      "salt"
+    ],
+    "diets": [
+      "vegetarian",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 6,
+      "carbs_g": 45,
+      "fat_g": 9
+    },
+    "meal_type": "Breakfast"
+  },
+  {
+    "id": "si-3",
+    "title": "Laccha Paratha",
+    "summary": "Layered and flakey whole wheat flatbread brushed with ghee.",
+    "ready_in_minutes": 30,
+    "servings": 3,
+    "ingredients": [
+      "atta",
+      "ghee",
+      "salt",
+      "water"
+    ],
+    "diets": [
+      "vegetarian",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 250,
+      "protein_g": 5,
+      "carbs_g": 35,
+      "fat_g": 10
+    },
+    "meal_type": "Side"
+  },
+  {
+    "id": "si-4",
+    "title": "Mint Chutney",
+    "summary": "Zesty dipping sauce made with fresh mint and coriander.",
+    "ready_in_minutes": 10,
+    "servings": 6,
+    "ingredients": [
+      "mint",
+      "coriander",
+      "green chili",
+      "lemon",
+      "ginger",
+      "salt"
+    ],
+    "diets": [
+      "vegetarian",
+      "vegan",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 15,
+      "protein_g": 0,
+      "carbs_g": 3,
+      "fat_g": 0
+    },
+    "meal_type": "Side"
+  },
+  {
+    "id": "si-5",
+    "title": "Boondi Raita",
+    "summary": "Cooling yogurt side with crispy chickpea flour pearls.",
+    "ready_in_minutes": 5,
+    "servings": 4,
+    "ingredients": [
+      "curd",
+      "boondi",
+      "cumin powder",
+      "chili powder",
+      "salt"
+    ],
+    "diets": [
+      "vegetarian",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 120,
+      "protein_g": 5,
+      "carbs_g": 10,
+      "fat_g": 7
+    },
+    "meal_type": "Side"
+  },
+  {
+    "id": "si-6",
+    "title": "Rumali Roti",
+    "summary": "Extra thin flatbread as thin as a handkerchief.",
+    "ready_in_minutes": 30,
+    "servings": 4,
+    "ingredients": [
+      "maida",
+      "milk",
+      "salt",
+      "oil"
+    ],
+    "diets": [
+      "vegetarian",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 160,
+      "protein_g": 5,
+      "carbs_g": 30,
+      "fat_g": 2
+    },
+    "meal_type": "Side"
+  },
+  {
+    "id": "si-7",
+    "title": "Cucumber Raita",
+    "summary": "Refreshing yogurt with grated cucumber and roasted cumin.",
+    "ready_in_minutes": 10,
+    "servings": 4,
+    "ingredients": [
+      "curd",
+      "cucumber",
+      "cumin",
+      "mint",
+      "salt"
+    ],
+    "diets": [
+      "vegetarian",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 80,
+      "protein_g": 4,
+      "carbs_g": 10,
+      "fat_g": 3
+    },
+    "meal_type": "Side"
+  },
+  {
+    "id": "si-8",
+    "title": "Mango Pickle",
+    "summary": "Traditional Indian spicy and sour raw mango pickle.",
+    "ready_in_minutes": 120,
+    "servings": 20,
+    "ingredients": [
+      "raw mango",
+      "mustard oil",
+      "fenugreek seeds",
+      "mustard seeds",
+      "fennel",
+      "chili powder",
+      "turmeric",
+      "salt"
+    ],
+    "diets": [
+      "vegetarian",
+      "vegan",
+      "gluten-free",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 40,
+      "protein_g": 0,
+      "carbs_g": 2,
+      "fat_g": 4
+    },
+    "meal_type": "Side"
+  },
+  {
+    "id": "si-9",
+    "title": "Dal Puri",
+    "summary": "Deep fried bread stuffed with spiced lentil filling.",
+    "ready_in_minutes": 45,
+    "servings": 4,
+    "ingredients": [
+      "atta",
+      "chana dal",
+      "cumin",
+      "ginger",
+      "chili",
+      "oil",
+      "salt"
+    ],
+    "diets": [
+      "vegetarian",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein_g": 8,
+      "carbs_g": 40,
+      "fat_g": 15
+    },
+    "meal_type": "Breakfast"
+  },
+  {
+    "id": "si-10",
+    "title": "Missi Roti",
+    "summary": "Nutritious flatbread made with chickpea flour and spices.",
+    "ready_in_minutes": 25,
+    "servings": 3,
+    "ingredients": [
+      "besan",
+      "atta",
+      "onion",
+      "ajwain",
+      "turmeric",
+      "ghee",
+      "salt"
+    ],
+    "diets": [
+      "vegetarian",
+      "halal"
+    ],
+    "nutrition": {
+      "calories": 200,
+      "protein_g": 8,
+      "carbs_g": 30,
+      "fat_g": 6
+    },
+    "meal_type": "Side"
   }
 ]

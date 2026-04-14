@@ -1,0 +1,22 @@
+{
+  "Butter": ["Ghee", "Margarine", "Coconut oil", "Applesauce (baking)"],
+  "Egg": ["Flax meal (1 tbsp + 3 tbsp water)", "Chia seeds", "Mashed banana", "Applesauce"],
+  "Heavy Cream": ["Coconut milk", "Greek yogurt (diluted)", "Milk + Butter mixture", "Cashew cream"],
+  "Milk": ["Almond milk", "Soy milk", "Oat milk", "Coconut milk"],
+  "Sugar": ["Honey", "Maple syrup", "Stevia", "Coconut sugar", "Jaggery (Gud)"],
+  "Paneer": ["Tofu", "Ricotta cheese (drained)", "Halloumi"],
+  "Rice": ["Cauliflower rice", "Quinoa", "Brown rice", "Millets"],
+  "All-purpose Flour (Maida)": ["Whole wheat flour (Atta)", "Oat flour", "Almond flour", "Gluten-free flour blend"],
+  "Bread Crumbs": ["Crushed cornflakes", "Oatmeal", "Almond meal"],
+  "Buttermilk": ["Milk + 1 tbsp Lemon juice/Vinegar", "Yogurt + Water"],
+  "Sour Cream": ["Greek yogurt", "Hung curd"],
+  "Soy Sauce": ["Tamari (gluten-free)", "Coconut aminos"],
+  "Vinegar": ["Lemon juice", "Lime juice", "Apple cider vinegar"],
+  "Honey": ["Maple syrup", "Agave nectar"],
+  "Yogurt": ["Coconut yogurt", "Soy yogurt", "Silken tofu (blended)"],
+  "Cheese": ["Nutritional yeast (for flavor)", "Vegan cheese", "Cashew cheese"],
+  "Potato": ["Sweet potato", "Cauliflower (mashed)", "Turnips"],
+  "Mayonnaise": ["Greek yogurt + Mustard", "Mashed avocado"],
+  "Oil": ["Applesauce (in baking)", "Mashed banana", "Yogurt"],
+  "Peanut Butter": ["Almond butter", "Sunbutter (sunflower seed butter)", "Soy nut butter"]
+}
