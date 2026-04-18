@@ -145,6 +145,8 @@ class SaveRecipeRequest(BaseModel):
     ready_in_minutes: Optional[int] = None
     servings: Optional[int] = None
 
+class RecipeRateRequest(BaseModel):
+    rating: int = Field(..., ge=1, le=5)
 
 class SavedRecipeResponse(BaseModel):
     id: int
@@ -159,6 +161,7 @@ class SavedRecipeResponse(BaseModel):
     fat_g: Optional[float] = None
     ready_in_minutes: Optional[int] = None
     servings: Optional[int] = None
+    rating: Optional[int] = None
 
     class Config:
         from_attributes = True

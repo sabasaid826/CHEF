@@ -9,16 +9,25 @@ export default function Ingredients() {
   const [error, setError] = useState(null);
   const [substitutions, setSubstitutions] = useState({}); // {ingredientName: [subs...]}
   const [loadingSubs, setLoadingSubs] = useState({});
+  const [history, setHistory] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('chef_search_history')) || []; }
+    catch { return []; }
+  });
   const navigate = useNavigate();
 
-  const handleParse = async () => {
-    if (!text.trim()) { setError('Please enter some ingredients first'); return; }
+  const handleParse = async (queryToParse = text) => {
+    if (!queryToParse.trim()) { setError('Please enter some ingredients first'); return; }
     setLoading(true);
     setError(null);
     setSubstitutions({});
     try {
-      const data = await api.post('/ingredients/parse', { text });
+      const data = await api.post('/ingredients/parse', { text: queryToParse });
       setResults(data);
+      
+      // Update history
+      const newHistory = [queryToParse.trim(), ...history.filter(h => h !== queryToParse.trim())].slice(0, 10);
+      setHistory(newHistory);
+      localStorage.setItem('chef_search_history', JSON.stringify(newHistory));
     } catch (err) {
       setError(err.message);
     } finally {
@@ -62,8 +71,26 @@ export default function Ingredients() {
           value={text}
           onChange={e => setText(e.target.value)}
         />
+        {history.length > 0 && (
+          <div className="search-history" style={{ marginTop: '10px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            <span style={{ fontSize: '12px', color: 'var(--text-muted)', display: 'flex', alignItems: 'center' }}>🕒 Recent:</span>
+            {history.map((h, i) => (
+              <button 
+                key={i} 
+                className="sub-tag" 
+                style={{ cursor: 'pointer', border: 'none', background: 'var(--bg-secondary)', color: 'var(--text-main)' }}
+                onClick={() => {
+                  setText(h);
+                  handleParse(h);
+                }}
+              >
+                {h.length > 20 ? h.substring(0, 20) + '...' : h}
+              </button>
+            ))}
+          </div>
+        )}
         {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
-        <button className={`btn-primary ${loading ? 'loading' : ''}`} onClick={handleParse} disabled={loading}>
+        <button className={`btn-primary ${loading ? 'loading' : ''}`} onClick={() => handleParse(text)} disabled={loading} style={{marginTop: '15px'}}>
           <span className="btn-icon">🔍</span> Analyze
         </button>
       </div>

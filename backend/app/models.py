@@ -63,6 +63,7 @@ class SavedRecipe(Base):
     fat_g: Mapped[float | None] = mapped_column(Float, nullable=True)
     ready_in_minutes: Mapped[int | None] = mapped_column(Integer, nullable=True)
     servings: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    rating: Mapped[int | None] = mapped_column(Integer, nullable=True)
     saved_at: Mapped[datetime] = mapped_column(
         DateTime, default=lambda: datetime.now(timezone.utc), nullable=False
     )

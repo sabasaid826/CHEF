@@ -22,6 +22,7 @@ from app.schemas import (
     RecipeNutrition,
     SaveRecipeRequest,
     SavedRecipeResponse,
+    RecipeRateRequest,
 )
 
 router = APIRouter(prefix="/api/recipes", tags=["recipes"])
@@ -342,9 +343,25 @@ def save_recipe(req: SaveRecipeRequest, db: Session = Depends(get_db), current_u
 
 
 @router.get("/saved", response_model=list[SavedRecipeResponse])
-def list_saved_recipes(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def list_saved_recipes(sort_by: str = None, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     """List saved recipes for the current user. Requires authentication."""
-    return db.query(SavedRecipe).filter(SavedRecipe.user_id == current_user.id).order_by(SavedRecipe.saved_at.desc()).all()
+    query = db.query(SavedRecipe).filter(SavedRecipe.user_id == current_user.id)
+    if sort_by == 'rating':
+        query = query.order_by(SavedRecipe.rating.desc().nullslast(), SavedRecipe.saved_at.desc())
+    else:
+        query = query.order_by(SavedRecipe.saved_at.desc())
+    return query.all()
+
+@router.put("/saved/{recipe_id}/rate", response_model=SavedRecipeResponse)
+def rate_saved_recipe(recipe_id: int, req: RecipeRateRequest, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    """Rate a saved recipe (1-5 stars). Only the owner can rate. Requires authentication."""
+    recipe = db.query(SavedRecipe).filter(SavedRecipe.id == recipe_id, SavedRecipe.user_id == current_user.id).first()
+    if not recipe:
+        raise HTTPException(status_code=404, detail="Recipe not found")
+    recipe.rating = req.rating
+    db.commit()
+    db.refresh(recipe)
+    return recipe
 
 
 @router.delete("/saved/{recipe_id}")
