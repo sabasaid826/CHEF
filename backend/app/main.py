@@ -84,11 +84,15 @@ def health_check():
 
 
 # ── Serve frontend ────────────────────────────────────────────
-FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend"
+FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend-react" / "dist"
 
 if FRONTEND_DIR.is_dir():
     app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="frontend")
-
-    @app.get("/", include_in_schema=False)
-    def serve_frontend():
+    
+    # We also need to serve assets from the root correctly or just depend on the default routing
+    @app.get("/{full_path:path}", include_in_schema=False)
+    def serve_frontend(full_path: str):
+        path = FRONTEND_DIR / full_path
+        if path.is_file():
+            return FileResponse(str(path))
         return FileResponse(str(FRONTEND_DIR / "index.html"))

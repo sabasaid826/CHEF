@@ -1,0 +1,197 @@
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import api from '../services/api';
+
+export default function Recipes() {
+  const location = useLocation();
+  const [ingredients, setIngredients] = useState(location.state?.ingredients || '');
+  const [diet, setDiet] = useState('');
+  const [maxCal, setMaxCal] = useState('');
+  const [maxTime, setMaxTime] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState(null);
+  const [error, setError] = useState(null);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+
+  useEffect(() => {
+    if (location.state?.ingredients) {
+      handleSearch();
+    }
+  }, [location.state]);
+
+  const handleSearch = async () => {
+    if (!ingredients.trim()) {
+      setError('Enter some ingredients to search');
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    try {
+      const ingList = ingredients.split(',').map(s => s.trim()).filter(Boolean);
+      const body = { ingredients: ingList, max_results: 10 };
+      if (diet) body.diet = diet;
+      if (maxCal) body.max_calories = parseInt(maxCal, 10);
+      if (maxTime) body.max_time = parseInt(maxTime, 10);
+
+      const data = await api.post('/recipes/search', body);
+      setResults(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const saveRecipe = async (recipe) => {
+    try {
+      await api.post('/recipes/save', {
+        title: recipe.title,
+        image_url: recipe.image_url || null,
+        summary: recipe.summary || null,
+        ingredients: (recipe.ingredients || []).join(', '),
+        instructions: recipe.instructions || null,
+        calories: recipe.nutrition?.calories || null,
+        protein_g: recipe.nutrition?.protein_g || null,
+        carbs_g: recipe.nutrition?.carbs_g || null,
+        fat_g: recipe.nutrition?.fat_g || null,
+        ready_in_minutes: recipe.ready_in_minutes || null,
+        servings: recipe.servings || null,
+      });
+      alert(`"\${recipe.title}" saved!`);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  return (
+    <section className="page active">
+      <div className="page-header">
+        <h1>Find Recipes</h1>
+        <p className="subtitle">Search by ingredients — we'll suggest what you can cook</p>
+      </div>
+
+      <div className="card glass">
+        <div className="input-row">
+          <input 
+            type="text" 
+            placeholder="e.g. paneer, tomato, onion" 
+            value={ingredients}
+            onChange={e => setIngredients(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleSearch()}
+          />
+          <button className={`btn-primary \${loading ? 'loading' : ''}`} onClick={handleSearch} disabled={loading}>
+            <span className="btn-icon">🍽️</span> Search
+          </button>
+        </div>
+        <div className="constraints-row">
+          <span className="constraints-label">⚙️ Constraints</span>
+          <select value={diet} onChange={e => setDiet(e.target.value)}>
+            <option value="">Any Diet</option>
+            <option value="vegetarian">🥬 Vegetarian</option>
+            <option value="vegan">🌱 Vegan</option>
+            <option value="halal">🌙 Halal</option>
+            <option value="keto">🥑 Keto</option>
+            <option value="gluten-free">🌾 Gluten-Free</option>
+            <option value="high-protein">💪 High-Protein</option>
+          </select>
+          <input type="number" placeholder="Max kcal" min="50" max="5000" step="50" className="constraint-input" value={maxCal} onChange={e => setMaxCal(e.target.value)} />
+          <input type="number" placeholder="Max min" min="5" max="300" step="5" className="constraint-input" value={maxTime} onChange={e => setMaxTime(e.target.value)} />
+        </div>
+      </div>
+
+      <div className="results-area">
+        {error && <div style={{color: 'red', marginBottom: '20px'}}>{error}</div>}
+        
+        {results && results.recipes.length === 0 && (
+          <div className="empty-state">
+            <span className="empty-icon">🍳</span>
+            <p>No matching recipes found. Try different ingredients or relax your constraints.</p>
+          </div>
+        )}
+
+        {results && results.recipes.length > 0 && (
+          <>
+            <div>
+              <span className="source-badge">Source: {results.source} data · {results.total} result(s)</span>
+              {results.constraints_applied?.map(c => <span key={c} className="constraints-badge" style={{marginLeft: '10px'}}>⚙️ {c}</span>)}
+            </div>
+            <div className="recipe-grid" style={{marginTop: '20px'}}>
+              {results.recipes.map((recipe, idx) => (
+                <div key={idx} className="recipe-card" style={{animationDelay: `\${idx * 0.06}s`}}>
+                  {recipe.image_url && <img className="recipe-image" src={recipe.image_url} alt={recipe.title} loading="lazy" />}
+                  <div className="recipe-info">
+                    <div className="recipe-title">{recipe.title}</div>
+                    {recipe.summary && <div className="recipe-summary" dangerouslySetInnerHTML={{__html: recipe.summary}}></div>}
+                    {recipe.diets?.length > 0 && (
+                      <div className="diet-tags">
+                        {recipe.diets.map(d => <span key={d} className="diet-tag">{d}</span>)}
+                      </div>
+                    )}
+                    <div className="recipe-meta">
+                      {Math.round(recipe.match_score * 100) > 0 && <span className="match-badge">{Math.round(recipe.match_score * 100)}% match</span>}
+                      {recipe.ready_in_minutes && <span className="recipe-meta-item">⏱️ <span className="value">{recipe.ready_in_minutes} min</span></span>}
+                      {recipe.nutrition?.calories && <span className="recipe-meta-item">🔥 <span className="value">{recipe.nutrition.calories} kcal</span></span>}
+                      {recipe.servings && <span className="recipe-meta-item">🍽️ <span className="value">{recipe.servings} servings</span></span>}
+                    </div>
+                    <div className="recipe-actions">
+                      <button className="btn-secondary" onClick={() => setSelectedRecipe(recipe)}>View Details</button>
+                      <button className="btn-secondary" onClick={() => saveRecipe(recipe)}>💾 Save</button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {selectedRecipe && (
+        <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && setSelectedRecipe(null)}>
+          <div className="modal-content">
+            <button className="modal-close" onClick={() => setSelectedRecipe(null)}>×</button>
+            <h2 className="modal-title">{selectedRecipe.title}</h2>
+            {selectedRecipe.summary && <p style={{color: 'var(--text-secondary)', fontSize: '14px'}} dangerouslySetInnerHTML={{__html: selectedRecipe.summary}}></p>}
+            
+            {selectedRecipe.ingredients && selectedRecipe.ingredients.length > 0 && (
+              <div className="modal-section" style={{marginTop: '15px'}}>
+                <h3>Ingredients</h3>
+                <ul>{selectedRecipe.ingredients.map((ing, i) => <li key={i}>{ing}</li>)}</ul>
+              </div>
+            )}
+
+            {selectedRecipe.instructions && (
+              <div className="modal-section" style={{marginTop: '15px'}}>
+                <h3>Instructions</h3>
+                <p className="instructions-text">{selectedRecipe.instructions}</p>
+              </div>
+            )}
+
+            {selectedRecipe.nutrition && (
+              <div className="modal-section" style={{marginTop: '15px'}}>
+                <h3>Nutrition</h3>
+                <div className="nutrition-grid" style={{marginTop: '8px'}}>
+                  <div className="nutrient-box">
+                    <div className="nutrient-value calories">{selectedRecipe.nutrition.calories}<span className="nutrient-unit"> kcal</span></div>
+                    <div className="nutrient-label">Calories</div>
+                  </div>
+                  <div className="nutrient-box">
+                    <div className="nutrient-value">{selectedRecipe.nutrition.protein_g}<span className="nutrient-unit">g</span></div>
+                    <div className="nutrient-label">Protein</div>
+                  </div>
+                  <div className="nutrient-box">
+                    <div className="nutrient-value">{selectedRecipe.nutrition.carbs_g}<span className="nutrient-unit">g</span></div>
+                    <div className="nutrient-label">Carbs</div>
+                  </div>
+                  <div className="nutrient-box">
+                    <div className="nutrient-value">{selectedRecipe.nutrition.fat_g}<span className="nutrient-unit">g</span></div>
+                    <div className="nutrient-label">Fat</div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
