@@ -16,16 +16,16 @@ export default function Navbar() {
           <span className="nav-logo">👨‍🍳</span>
           <div className="nav-brand-text">
             <span className="nav-title">CHEF</span>
-            <span className="nav-subtitle">Constraint-based Hybrid Eating Framework</span>
+            <span className="nav-subtitle"></span>
           </div>
         </div>
 
         <div className="nav-links">
-          <NavLink to="/" end className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}>The Kitchen</NavLink>
+          <NavLink to="/" end className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}>Kitchen</NavLink>
           <NavLink to="/ingredients" className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}>Ingredients</NavLink>
           <NavLink to="/recipes" className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}>Recipes</NavLink>
           <NavLink to="/nutrition" className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}>Nutrition</NavLink>
-          <NavLink to="/tdee" className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}>Profile/TDEE</NavLink>
+          <NavLink to="/tdee" className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}>Profile</NavLink>
           <NavLink to="/detection" className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}>Detection</NavLink>
           <NavLink to="/saved" className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}>Saved</NavLink>
           <NavLink to="/planner" className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}>Planner</NavLink>
