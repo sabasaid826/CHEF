@@ -5,22 +5,11 @@ Falls back gracefully when no external API key is configured.
 
 import json
 from pathlib import Path
-from typing import Dict, List
 from fastapi import APIRouter
 from app.schemas import NutritionRequest, NutritionData
 
 router = APIRouter(prefix="/api/nutrition", tags=["nutrition"])
 
-# ── Substitutions Data ─────────────────────────────────────────
-SUBSTITUTIONS_FILE = Path(__file__).parent.parent / "substitutions.json"
-
-@router.get("/substitutions", response_model=Dict[str, List[str]])
-def get_substitutions():
-    """Get a mapping of common food substitutions for health or missing ingredients."""
-    if SUBSTITUTIONS_FILE.exists():
-        with open(SUBSTITUTIONS_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return {}
 
 # ── Built-in nutrition database (per 100g or per serving) ──────
 NUTRITION_DB: dict[str, dict] = {

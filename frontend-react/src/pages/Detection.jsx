@@ -101,21 +101,27 @@ export default function Detection() {
         {results && (
           <div>
             <h3 style={{marginBottom: '12px'}}>Detected Ingredients</h3>
-            <div className="detection-card" style={{padding: '15px', background: 'rgba(255,255,255,0.7)', borderRadius: '12px', marginBottom: '15px'}}>
-              {results.detected_items && results.detected_items.length > 0 ? (
-                <ul style={{listStyleType: 'disc', paddingLeft: '20px'}}>
-                  {results.detected_items.map((item, idx) => (
-                    <li key={idx} style={{textTransform: 'capitalize', padding: '4px 0'}}>{item}</li>
+            <span className="source-badge" style={{marginBottom: '12px', display: 'inline-block'}}>
+              Method: {results.method} · {results.message}
+            </span>
+            <div className="detection-card" style={{padding: '15px', background: 'var(--bg-card)', border: '1px solid var(--border-glass)', borderRadius: '12px', marginBottom: '15px'}}>
+              {results.detected_foods && results.detected_foods.length > 0 ? (
+                <ul style={{listStyleType: 'none', padding: 0}}>
+                  {results.detected_foods.map((item, idx) => (
+                    <li key={idx} style={{textTransform: 'capitalize', padding: '8px 0', borderBottom: '1px solid var(--border-glass)', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                      <span style={{fontWeight: 500}}>{item.label}</span>
+                      <span className="match-badge" style={{fontSize: '11px'}}>{Math.round(item.confidence * 100)}% confidence</span>
+                    </li>
                   ))}
                 </ul>
               ) : (
-                <p>No food items detected clearly.</p>
+                <p style={{color: 'var(--text-muted)'}}>No food items detected clearly. Try a clearer image with visible food.</p>
               )}
             </div>
-            {results.detected_items && results.detected_items.length > 0 && (
+            {results.ingredients && results.ingredients.length > 0 && (
               <div className="search-from-parsed">
-                <button className="btn-secondary" onClick={() => navigate('/recipes', { state: { ingredients: results.detected_items.join(', ') } })}>
-                  Search Recipes with these ingredients
+                <button className="btn-secondary" onClick={() => navigate('/recipes', { state: { ingredients: results.ingredients.join(', ') } })}>
+                  🍽️ Search Recipes with these ingredients
                 </button>
               </div>
             )}

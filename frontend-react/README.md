@@ -1,16 +1,40 @@
-# React + Vite
+# CHEF Frontend — React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The frontend for the CHEF (Constraint-based Hybrid Eating Framework) application.
 
-Currently, two official plugins are available:
+## Tech Stack
+- **React 19** with JSX
+- **Vite 8** for development and building
+- **React Router 7** for client-side routing
+- **Axios** for API communication (with JWT interceptor)
+- **Lucide React** for icons
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Development
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The Vite dev server runs on `http://localhost:5173` and proxies all `/api` requests to `http://127.0.0.1:8000` (the FastAPI backend).
 
-## Expanding the ESLint configuration
+## Production Build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run build
+```
+
+The built files are output to `dist/`. The FastAPI backend serves these automatically.
+
+## Pages
+
+| Route | Component | Description |
+|-------|-----------|-------------|
+| `/` | Home | Kitchen dashboard + Recipe of the Day |
+| `/ingredients` | Ingredients | Ingredient parser + substitution lookup |
+| `/recipes` | Recipes | Recipe search with constraint filtering |
+| `/nutrition` | Nutrition | Nutritional value lookup (350+ foods) |
+| `/detection` | Detection | Food detection via YOLOv8 image upload |
+| `/tdee` | TDEEProfile | TDEE calculator + macro targets |
+| `/saved` | SavedRecipes | Bookmarked recipes with star ratings |
+| `/planner` | MealPlanner | Weekly meal calendar + shopping list |

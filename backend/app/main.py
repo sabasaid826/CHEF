@@ -2,10 +2,15 @@
 CHEF — Constraint-based Hybrid Eating Framework
 
 Capstone project: a Python 3.14-compatible food assistant API with JWT auth.
-  • Ingredient parsing (rule-based)
+  • Ingredient parsing (rule-based regex)
   • Recipe search (demo data + optional Spoonacular)
-  • Nutrition lookup (built-in database)
-  • Food detection (rule-based demo)
+  • Nutrition lookup (350+ foods built-in database)
+  • Food detection (YOLOv8 ML computer vision)
+  • JWT authentication (signup, login, user profiles)
+  • TDEE calculator (Mifflin-St Jeor formula)
+  • Weekly meal planner + shopping list generator
+  • Ingredient substitutions (20 common swaps)
+  • Recipe ratings (1-5 stars)
 
 Run:  python -m uvicorn app.main:app --reload
 """
@@ -79,8 +84,11 @@ def health_check():
         "features": {
             "ingredient_parsing": "rule_based",
             "recipe_search": "spoonacular" if settings.SPOONACULAR_API_KEY else "demo",
-            "nutrition": "demo",
-            "food_detection": "rule_based_demo",
+            "nutrition": "built_in_db_350_foods",
+            "food_detection": "yolov8_ml",
+            "authentication": "jwt_bcrypt",
+            "meal_planner": "enabled",
+            "tdee_calculator": "mifflin_st_jeor",
         },
     }
 
