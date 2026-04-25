@@ -77,6 +77,7 @@ class IngredientItem(BaseModel):
     quantity: Optional[float] = None
     unit: Optional[str] = None
     raw_text: str = ""
+    substitutes: list[str] = []
 
 
 class IngredientParseRequest(BaseModel):

@@ -4,6 +4,8 @@ Extracts ingredient names, quantities, and units from natural language text.
 """
 
 import re
+import json
+from pathlib import Path
 from fastapi import APIRouter
 from app.schemas import IngredientParseRequest, IngredientParseResult, IngredientItem
 
@@ -26,6 +28,23 @@ INGREDIENT_PATTERN = re.compile(
     rf"(?P<name>.+?)\s*$",
     re.IGNORECASE,
 )
+
+_DATA_FILE = Path(__file__).resolve().parent.parent / "substitutions.json"
+_SUBSTITUTIONS = {}
+if _DATA_FILE.exists():
+    with open(_DATA_FILE, "r") as f:
+        _SUBSTITUTIONS = json.load(f)
+
+def _find_substitutes(name: str) -> list[str]:
+    for key in _SUBSTITUTIONS:
+        if key.lower() == name.lower():
+            return _SUBSTITUTIONS[key]
+    matches = {k: v for k, v in _SUBSTITUTIONS.items() if name.lower() in k.lower()}
+    if matches:
+        first_key = list(matches.keys())[0]
+        return matches[first_key]
+    return []
+
 
 
 def _parse_quantity(raw: str) -> float | None:
@@ -69,10 +88,11 @@ def parse_ingredient_line(line: str) -> IngredientItem:
             quantity=_parse_quantity(qty_str),
             unit=unit.lower() if unit else None,
             raw_text=line,
+            substitutes=_find_substitutes(name if name else line)
         )
 
     # Fallback: treat the whole line as the ingredient name
-    return IngredientItem(name=line, raw_text=line)
+    return IngredientItem(name=line, raw_text=line, substitutes=_find_substitutes(line))
 
 
 def split_ingredient_text(text: str) -> list[str]:

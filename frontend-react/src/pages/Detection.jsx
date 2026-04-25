@@ -72,6 +72,7 @@ export default function Detection() {
           accept="image/*" 
           style={{display: 'none'}} 
           ref={fileInputRef}
+          onClick={(e) => { e.target.value = null; }}
           onChange={handleFileChange} 
         />
         <div 

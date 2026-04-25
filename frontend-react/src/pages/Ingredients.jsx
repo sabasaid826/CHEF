@@ -7,8 +7,6 @@ export default function Ingredients() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
-  const [substitutions, setSubstitutions] = useState({}); // {ingredientName: [subs...]}
-  const [loadingSubs, setLoadingSubs] = useState({});
   const [history, setHistory] = useState(() => {
     try { return JSON.parse(localStorage.getItem('chef_search_history')) || []; }
     catch { return []; }
@@ -19,7 +17,6 @@ export default function Ingredients() {
     if (!queryToParse.trim()) { setError('Please enter some ingredients first'); return; }
     setLoading(true);
     setError(null);
-    setSubstitutions({});
     try {
       const data = await api.post('/ingredients/parse', { text: queryToParse });
       setResults(data);
@@ -41,21 +38,6 @@ export default function Ingredients() {
     }
   };
 
-  const fetchSubstitution = async (ingredientName) => {
-    if (substitutions[ingredientName] !== undefined) return; // already fetched
-    setLoadingSubs(prev => ({ ...prev, [ingredientName]: true }));
-    try {
-      const data = await api.get(`/substitutions/${encodeURIComponent(ingredientName)}`);
-      setSubstitutions(prev => ({
-        ...prev,
-        [ingredientName]: data.found ? data.substitutes : null
-      }));
-    } catch {
-      setSubstitutions(prev => ({ ...prev, [ingredientName]: null }));
-    } finally {
-      setLoadingSubs(prev => ({ ...prev, [ingredientName]: false }));
-    }
-  };
 
   return (
     <section className="page active">
@@ -121,19 +103,11 @@ export default function Ingredients() {
                     <td>{ing.quantity !== null ? ing.quantity : '—'}</td>
                     <td>{ing.unit ? ing.unit : '—'}</td>
                     <td>
-                      {substitutions[ing.name] === undefined ? (
-                        <button
-                          className="sub-lookup-btn"
-                          onClick={() => fetchSubstitution(ing.name)}
-                          disabled={loadingSubs[ing.name]}
-                        >
-                          {loadingSubs[ing.name] ? '⏳' : '🔄 Find subs'}
-                        </button>
-                      ) : substitutions[ing.name] === null ? (
+                      {!ing.substitutes || ing.substitutes.length === 0 ? (
                         <span style={{ color: 'var(--text-muted)', fontSize: '12px' }}>None found</span>
                       ) : (
                         <div className="sub-list">
-                          {substitutions[ing.name].map((s, si) => (
+                          {ing.substitutes.map((s, si) => (
                             <span key={si} className="sub-tag">{s}</span>
                           ))}
                         </div>
