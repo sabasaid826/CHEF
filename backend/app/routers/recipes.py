@@ -9,6 +9,7 @@ Performance notes:
 """
 
 import json
+import re
 from pathlib import Path
 from datetime import datetime
 import random
@@ -141,13 +142,59 @@ def _diet_matches(recipe: RecipeItem, diet: str) -> bool:
     return normalized_diet in recipe_diets
 
 
+def _extract_instructions(recipe_info: dict) -> str:
+    """
+    Extract step-by-step instructions from Spoonacular recipe info.
+    Prefers analyzedInstructions (structured steps) over raw instructions HTML.
+    """
+    # Try analyzedInstructions first (structured, clean steps)
+    analyzed = recipe_info.get("analyzedInstructions", [])
+    if analyzed:
+        steps = []
+        for section in analyzed:
+            section_name = section.get("name", "")
+            section_steps = section.get("steps", [])
+            if section_name and len(analyzed) > 1:
+                steps.append(f"— {section_name} —")
+            for step in section_steps:
+                step_text = step.get("step", "").strip()
+                if step_text:
+                    steps.append(f"{step.get('number', len(steps)+1)}. {step_text}")
+        if steps:
+            return "\n".join(steps)
+
+    # Fallback: raw instructions field (may contain HTML)
+    raw = recipe_info.get("instructions", "")
+    if raw:
+        # Strip HTML tags
+        clean = re.sub(r"<[^>]+>", "\n", raw)
+        # Collapse whitespace and clean up
+        lines = [line.strip() for line in clean.split("\n") if line.strip()]
+        if lines:
+            # Add numbering if not already numbered
+            result = []
+            for i, line in enumerate(lines, 1):
+                if not re.match(r"^\d+[\.\)]\s", line):
+                    result.append(f"{i}. {line}")
+                else:
+                    result.append(line)
+            return "\n".join(result)
+
+    return ""
+
+
 async def _search_spoonacular(
     ingredients: list[str],
     max_results: int,
     diet: str | None = None,
     max_time: int | None = None,
 ) -> list[RecipeItem] | None:
-    """Try to search Spoonacular API. Returns None if unavailable."""
+    """
+    Search Spoonacular API with full recipe details.
+    
+    Step 1: findByIngredients to get matching recipe IDs.
+    Step 2: informationBulk to get full details (instructions, nutrition, etc.)
+    """
     if not settings.SPOONACULAR_API_KEY:
         return None
     try:
@@ -163,28 +210,101 @@ async def _search_spoonacular(
         if max_time:
             params["maxReadyTime"] = max_time
 
-        async with httpx.AsyncClient(timeout=10.0) as client:
+        async with httpx.AsyncClient(timeout=15.0) as client:
+            # Step 1: Find recipes by ingredients
             resp = await client.get(
                 "https://api.spoonacular.com/recipes/findByIngredients",
                 params=params,
             )
             if resp.status_code != 200:
                 return None
-            data = resp.json()
-            return [
-                RecipeItem(
-                    id=str(item.get("id", "")),
-                    title=item.get("title", ""),
-                    image_url=item.get("image", ""),
-                    ingredients=[
-                        ing.get("name", "") for ing in item.get("usedIngredients", [])
-                    ] + [
-                        ing.get("name", "") for ing in item.get("missedIngredients", [])
-                    ],
-                    match_score=1.0 - (item.get("missedIngredientCount", 0) / max(len(ingredients), 1)),
-                )
-                for item in data
-            ]
+            search_data = resp.json()
+            if not search_data:
+                return []
+
+            # Build match scores from the initial search
+            match_scores = {}
+            for item in search_data:
+                rid = str(item.get("id", ""))
+                missed = item.get("missedIngredientCount", 0)
+                match_scores[rid] = 1.0 - (missed / max(len(ingredients), 1))
+
+            # Step 2: Fetch full recipe details in bulk
+            recipe_ids = [str(item["id"]) for item in search_data if "id" in item]
+            bulk_resp = await client.get(
+                "https://api.spoonacular.com/recipes/informationBulk",
+                params={
+                    "ids": ",".join(recipe_ids),
+                    "apiKey": settings.SPOONACULAR_API_KEY,
+                    "includeNutrition": True,
+                },
+            )
+
+            if bulk_resp.status_code != 200:
+                # Fallback: return basic results without instructions
+                return [
+                    RecipeItem(
+                        id=str(item.get("id", "")),
+                        title=item.get("title", ""),
+                        image_url=item.get("image", ""),
+                        ingredients=[
+                            ing.get("name", "") for ing in item.get("usedIngredients", [])
+                        ] + [
+                            ing.get("name", "") for ing in item.get("missedIngredients", [])
+                        ],
+                        match_score=match_scores.get(str(item.get("id", "")), 0.0),
+                    )
+                    for item in search_data
+                ]
+
+            bulk_data = bulk_resp.json()
+
+            results = []
+            for info in bulk_data:
+                rid = str(info.get("id", ""))
+                
+                # Extract ingredients with amounts
+                ext_ingredients = []
+                for ing in info.get("extendedIngredients", []):
+                    original = ing.get("original", ing.get("name", ""))
+                    ext_ingredients.append(original)
+
+                # Extract nutrition
+                nutrition = None
+                nutr_data = info.get("nutrition", {})
+                if nutr_data:
+                    nutrients = {n["name"].lower(): n["amount"] for n in nutr_data.get("nutrients", [])}
+                    nutrition = RecipeNutrition(
+                        calories=nutrients.get("calories", 0),
+                        protein_g=nutrients.get("protein", 0),
+                        carbs_g=nutrients.get("carbohydrates", 0),
+                        fat_g=nutrients.get("fat", 0),
+                    )
+
+                # Extract instructions
+                instructions = _extract_instructions(info)
+
+                # Clean summary (remove HTML tags)
+                summary = info.get("summary", "")
+                if summary:
+                    summary = re.sub(r"<[^>]+>", "", summary)
+
+                results.append(RecipeItem(
+                    id=rid,
+                    title=info.get("title", ""),
+                    image_url=info.get("image", ""),
+                    summary=summary,
+                    ready_in_minutes=info.get("readyInMinutes"),
+                    servings=info.get("servings"),
+                    ingredients=ext_ingredients,
+                    instructions=instructions if instructions else None,
+                    diets=info.get("diets", []),
+                    nutrition=nutrition,
+                    source_url=info.get("sourceUrl"),
+                    match_score=match_scores.get(rid, 0.0),
+                ))
+
+            return results
     except Exception:
         return None
 
@@ -225,10 +345,13 @@ async def search_recipes(req: RecipeSearchRequest):
 
     # Try Spoonacular first if ingredients are provided
     if req.ingredients:
-        api_results = await _search_spoonacular(req.ingredients, req.max_results, req.diet, req.max_time)
+        total_needed = req.max_results * req.page
+        api_results = await _search_spoonacular(req.ingredients, total_needed, req.diet, req.max_time)
         if api_results is not None:
+            start_idx = (req.page - 1) * req.max_results
+            end_idx = start_idx + req.max_results
             return RecipeSearchResponse(
-                recipes=api_results[:req.max_results],
+                recipes=api_results[start_idx:end_idx],
                 source="Spoonacular",
                 total=len(api_results),
                 constraints_applied=constraints,
@@ -287,8 +410,11 @@ async def search_recipes(req: RecipeSearchRequest):
     else:
         scored.sort(key=lambda r: (r.match_score, r.popularity), reverse=True)
 
+    start_idx = (req.page - 1) * req.max_results
+    end_idx = start_idx + req.max_results
+
     return RecipeSearchResponse(
-        recipes=scored[:req.max_results],
+        recipes=scored[start_idx:end_idx],
         source="CHEF Database",
         total=len(scored),
         constraints_applied=constraints,

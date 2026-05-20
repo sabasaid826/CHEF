@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import api from '../services/api';
 import RecipeModal from '../components/RecipeModal';
@@ -16,8 +16,11 @@ export default function Recipes() {
   const [error, setError] = useState(null);
   const [hasSearched, setHasSearched] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [page, setPage] = useState(1);
+  const didInitRef = useRef(false);
 
-  const handleSearch = useCallback(async () => {
+  const handleSearch = useCallback(async (pageNum = 1) => {
+    const actualPage = typeof pageNum === 'number' ? pageNum : 1;
     if (!ingredients.trim() && !region && !mealType && !diet && !maxCal && !maxTime) {
       // Just fetch popular recipes if nothing is selected
     }
@@ -25,7 +28,7 @@ export default function Recipes() {
     setError(null);
     try {
       const ingList = ingredients.split(',').map(s => s.trim()).filter(Boolean);
-      const body = { ingredients: ingList, max_results: 24 };
+      const body = { ingredients: ingList, max_results: 25, page: actualPage };
       if (diet) body.diet = diet;
       if (region) body.region = region;
       if (mealType) body.meal_type = mealType;
@@ -34,16 +37,21 @@ export default function Recipes() {
 
       const data = await api.post('/recipes/search', body);
       setResults(data);
+      setPage(actualPage);
       setHasSearched(true);
+      if (actualPage > 1) {
+        document.querySelector('.results-area')?.scrollIntoView({ behavior: 'smooth' });
+      }
     } catch (err) {
       setError(err.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
-  }, [ingredients, diet, maxCal, maxTime]);
+  }, [ingredients, diet, region, mealType, maxCal, maxTime]);
 
   useEffect(() => {
-    if (location.state?.ingredients) {
+    if (location.state?.ingredients && !didInitRef.current) {
+      didInitRef.current = true;
       handleSearch();
     }
   }, [location.state?.ingredients, handleSearch]);
@@ -55,6 +63,7 @@ export default function Recipes() {
     setMaxCal('');
     setMaxTime('');
     setError(null);
+    setPage(1);
   };
 
   const saveRecipe = async (recipe) => {
@@ -92,9 +101,9 @@ export default function Recipes() {
             placeholder="e.g. paneer, tomato, onion" 
             value={ingredients}
             onChange={e => setIngredients(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && handleSearch()}
+            onKeyDown={e => e.key === 'Enter' && handleSearch(1)}
           />
-          <button className={`btn-primary ${loading ? 'loading' : ''}`} onClick={handleSearch} disabled={loading}>
+          <button className={`btn-primary ${loading ? 'loading' : ''}`} onClick={() => handleSearch(1)} disabled={loading}>
             <span className="btn-icon">🍽️</span> Search
           </button>
         </div>
@@ -213,6 +222,58 @@ export default function Recipes() {
                 </div>
               ))}
             </div>
+            
+            {results && results.total > 25 && (
+              <div className="pagination">
+                <div className="pagination-info">
+                  Showing {Math.min((page - 1) * 25 + 1, results.total)}-{Math.min(page * 25, results.total)} of {results.total} recipes
+                </div>
+                
+                <button 
+                  className="pagination-btn" 
+                  disabled={page === 1 || loading} 
+                  onClick={() => handleSearch(page - 1)}
+                >
+                  &lt; Previous
+                </button>
+                
+                {(() => {
+                  const totalPages = Math.ceil(results.total / 25);
+                  const pages = [];
+                  for (let p = 1; p <= totalPages; p++) {
+                    if (p === 1 || p === totalPages || Math.abs(p - page) <= 2) {
+                      if (pages.length > 0 && p - pages[pages.length - 1] > 1) {
+                        pages.push('...');
+                      }
+                      pages.push(p);
+                    }
+                  }
+                  return pages.map((p, idx) => {
+                    if (p === '...') {
+                      return <span key={`ellipsis-${idx}`} className="pagination-ellipsis">...</span>;
+                    }
+                    return (
+                      <button
+                        key={p}
+                        className={`pagination-btn ${page === p ? 'active' : ''}`}
+                        disabled={loading}
+                        onClick={() => handleSearch(p)}
+                      >
+                        {p}
+                      </button>
+                    );
+                  });
+                })()}
+                
+                <button 
+                  className="pagination-btn" 
+                  disabled={page * 25 >= results.total || loading} 
+                  onClick={() => handleSearch(page + 1)}
+                >
+                  Next &gt;
+                </button>
+              </div>
+            )}
           </>
         )}
       </div>

@@ -161,7 +161,8 @@ class RecipeSearchRequest(BaseModel):
     )
 
     ingredients: list[str] = Field(default_factory=list)
-    max_results: int = Field(10, ge=1, le=50)
+    max_results: int = Field(25, ge=1, le=50)
+    page: int = Field(1, ge=1, description="Page number for search results")
     # ── Constraints ──
     max_calories: Optional[int] = Field(None, ge=50, le=5000, description="Max calories per serving")
     max_time: Optional[int] = Field(None, ge=5, le=300, description="Max cook time in minutes")

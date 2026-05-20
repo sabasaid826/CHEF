@@ -11,22 +11,36 @@ from app.schemas import DetectionResult, DetectedFood
 
 router = APIRouter(prefix="/api/detect", tags=["detection"])
 
-# ── YOLOv8 Model Initialization ───────────────────────────────────────────────
+# ── YOLOv8 Model — Lazy Initialization ─────────────────────────────────────
+# Model is NOT loaded at startup. It is loaded on first request to /api/detect/image.
+# This keeps the backend RAM footprint ~430 MB lighter until detection is actually used.
 _MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 MB hard limit
 _ALLOWED_MIME_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
 
-try:
-    from ultralytics import YOLO
-    model = YOLO("yolov8n.pt")
-    _MODEL_AVAILABLE = True
-except Exception as _e:
-    model = None
-    _MODEL_AVAILABLE = False
-    import logging
-    logging.getLogger(__name__).warning(
-        f"YOLOv8 model could not be loaded: {_e}. "
-        "Detection endpoint will return an error until the model file is available."
-    )
+import logging
+_logger = logging.getLogger(__name__)
+
+_model = None          # cached model instance (None = not yet loaded)
+_model_available: bool | None = None  # None = untried, True = ok, False = failed
+
+
+def _get_model():
+    """Lazy-load the YOLOv8 model on first call, then cache it for subsequent requests."""
+    global _model, _model_available
+    if _model_available is None:  # first call — attempt to load
+        try:
+            from ultralytics import YOLO
+            _model = YOLO("yolov8n.pt")
+            _model_available = True
+            _logger.info("YOLOv8 model loaded successfully (lazy init).")
+        except Exception as _e:
+            _model = None
+            _model_available = False
+            _logger.warning(
+                f"YOLOv8 model could not be loaded: {_e}. "
+                "Detection endpoint will return 503 until the model file is available."
+            )
+    return _model, _model_available
 
 # COCO dataset class indices for food items we want to extract
 FOOD_CLASSES = {
@@ -61,7 +75,8 @@ async def detect_food(file: UploadFile = File(...)):
     - Passes the image to YOLOv8, filters for food-class objects,
       and returns detected ingredients with confidence scores.
     """
-    if not _MODEL_AVAILABLE:
+    model, model_available = _get_model()
+    if not model_available:
         raise HTTPException(
             status_code=503,
             detail="YOLOv8 model is not available. Please ensure yolov8n.pt is present in the backend directory."
@@ -92,7 +107,7 @@ async def detect_food(file: UploadFile = File(...)):
         raise HTTPException(status_code=400, detail="Could not decode image. Please upload a valid image file.")
 
     # 4. Run YOLOv8 Inference restricted to food classes
-    results = model.predict(source=img, classes=list(FOOD_CLASSES.keys()), conf=0.25, verbose=False)
+    results = model.predict(source=img, classes=list(FOOD_CLASSES.keys()), conf=0.25, verbose=False)  # type: ignore[union-attr]
 
     # 5. Parse predictions
     detected: list[DetectedFood] = []
