@@ -141,7 +141,7 @@ class RecipeItem(BaseModel):
     diets: list[str] = []
     meal_type: Optional[str] = None
     region: Optional[str] = None
-    popularity: int = 0
+    popularity: float = 0
     match_score: float = 0.0
 
 

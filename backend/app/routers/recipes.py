@@ -521,11 +521,27 @@ def delete_saved_recipe(
 def get_daily_recipe():
     """
     Get the recipe of the day — changes every 24 hours.
+    Only selects high-quality recipes that have:
+    - A valid image URL
+    - Detailed instructions (≥ 50 characters)
+    - At least 3 ingredients
     Prioritizes vegetarian recipes for a balanced recommendation.
     """
-    eligible = [r for r in DEMO_RECIPES if "vegetarian" in r.diets]
+    # Filter to only high-quality, complete recipes
+    quality_filter = [
+        r for r in DEMO_RECIPES
+        if r.image_url
+        and r.instructions
+        and len(r.instructions) >= 50
+        and len(r.ingredients) >= 3
+    ]
+
+    # Prefer vegetarian from the quality pool
+    eligible = [r for r in quality_filter if "vegetarian" in r.diets]
     if not eligible:
-        eligible = DEMO_RECIPES
+        eligible = quality_filter
+    if not eligible:
+        eligible = DEMO_RECIPES  # ultimate fallback
     if not eligible:
         raise HTTPException(status_code=503, detail="No recipes available in the database.")
 
