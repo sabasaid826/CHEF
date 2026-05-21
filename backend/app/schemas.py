@@ -48,11 +48,18 @@ class UserResponse(BaseModel):
     height_cm: Optional[float] = None
     activity_level: Optional[str] = None
     goal: Optional[str] = None
+    goal_intensity: Optional[str] = None
+    body_fat_percent: Optional[float] = None
 
     target_calories: Optional[int] = None
     target_protein: Optional[int] = None
     target_carbs: Optional[int] = None
     target_fat: Optional[int] = None
+    bmr: Optional[int] = None
+    tdee_maintenance: Optional[int] = None
+    bmi: Optional[float] = None
+    target_fiber_g: Optional[int] = None
+    target_water_ml: Optional[int] = None
 
 
 # ── TDEE Calculator ─────────────────────────────────────────────
@@ -66,7 +73,9 @@ class TDEERequest(BaseModel):
                 "weight_kg": 60.0,
                 "height_cm": 165.0,
                 "activity_level": "moderately_active",
-                "goal": "lose"
+                "goal": "lose",
+                "goal_intensity": "moderate",
+                "body_fat_percent": None
             }
         }
     )
@@ -80,13 +89,36 @@ class TDEERequest(BaseModel):
         description="sedentary | lightly_active | moderately_active | very_active | extra_active"
     )
     goal: str = Field(..., description="lose | maintain | gain")
+    goal_intensity: str = Field(
+        "moderate",
+        description="mild | moderate | aggressive — controls deficit/surplus percentage"
+    )
+    body_fat_percent: Optional[float] = Field(
+        None, gt=1, lt=70,
+        description="Optional body fat %. Enables the more accurate Katch-McArdle formula."
+    )
 
 
 class TDEEResponse(BaseModel):
+    # ── Core targets ──
     target_calories: int
     target_protein: int
     target_carbs: int
     target_fat: int
+    # ── Diagnostic breakdown ──
+    bmr: int = Field(..., description="Basal Metabolic Rate (kcal)")
+    tdee_maintenance: int = Field(..., description="Maintenance TDEE before goal adjustment (kcal)")
+    bmi: float = Field(..., description="Body Mass Index")
+    bmi_category: str = Field(..., description="Underweight | Normal | Overweight | Obese I | Obese II | Obese III")
+    formula_used: str = Field(..., description="Mifflin-St Jeor or Katch-McArdle")
+    # ── Additional real-world targets ──
+    target_fiber_g: int = Field(..., description="Daily fiber target (g)")
+    target_water_ml: int = Field(..., description="Daily water target (ml)")
+    # ── Macro split info ──
+    protein_pct: int = Field(..., description="Protein % of total calories")
+    carbs_pct: int = Field(..., description="Carbs % of total calories")
+    fat_pct: int = Field(..., description="Fat % of total calories")
+    protein_per_kg: float = Field(..., description="Protein grams per kg body weight")
 
 
 # ── Ingredients ─────────────────────────────────────────────────
