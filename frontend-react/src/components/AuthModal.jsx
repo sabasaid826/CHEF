@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { createPortal } from 'react-dom';
 import { AuthContext } from '../context/AuthContext';
 
 export default function AuthModal({ isOpen, onClose }) {
@@ -30,7 +31,7 @@ export default function AuthModal({ isOpen, onClose }) {
     setError('');
   };
 
-  return (
+  return createPortal(
     <div className="modal-overlay">
       <div className="modal-content auth-modal">
         <button className="modal-close" onClick={onClose}>×</button>
@@ -85,6 +86,8 @@ export default function AuthModal({ isOpen, onClose }) {
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
+

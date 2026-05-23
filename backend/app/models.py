@@ -29,12 +29,20 @@ class User(Base):
     height_cm: Mapped[float | None] = mapped_column(Float, nullable=True)
     activity_level: Mapped[str | None] = mapped_column(String(50), nullable=True)
     goal: Mapped[str | None] = mapped_column(String(50), nullable=True)
+    goal_intensity: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    body_fat_percent: Mapped[float | None] = mapped_column(Float, nullable=True)
     
     # Calculated Targets
     target_calories: Mapped[int | None] = mapped_column(Integer, nullable=True)
     target_protein: Mapped[int | None] = mapped_column(Integer, nullable=True)
     target_carbs: Mapped[int | None] = mapped_column(Integer, nullable=True)
     target_fat: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    bmr: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    tdee_maintenance: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    bmi: Mapped[float | None] = mapped_column(Float, nullable=True)
+    target_fiber_g: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    target_water_ml: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
 
     # Relationship: a user has many saved recipes
     saved_recipes: Mapped[list["SavedRecipe"]] = relationship(

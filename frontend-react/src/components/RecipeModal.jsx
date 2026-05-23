@@ -1,9 +1,59 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
+
+function InstructionSteps({ instructions }) {
+  if (!instructions) {
+    return (
+      <div className="modal-section" style={{marginTop: '15px'}}>
+        <h3>Instructions</h3>
+        <p style={{color: 'var(--text-muted)', fontStyle: 'italic', fontSize: '14px'}}>
+          No instructions available for this recipe. Try searching for this recipe online for detailed steps.
+        </p>
+      </div>
+    );
+  }
+
+  const lines = instructions.split('\n').filter(s => s.trim());
+  
+  // Detect if there are section headers (lines starting with "—")
+  const hasSections = lines.some(l => l.trim().startsWith('—'));
+
+  return (
+    <div className="modal-section" style={{marginTop: '15px'}}>
+      <h3>Instructions</h3>
+      <div className="instructions-steps">
+        {lines.map((line, i) => {
+          const trimmed = line.trim();
+          
+          // Section header (from Spoonacular multi-section recipes)
+          if (trimmed.startsWith('—') && trimmed.endsWith('—')) {
+            return (
+              <div key={i} className="instruction-section-header">
+                {trimmed.replace(/^—\s*/, '').replace(/\s*—$/, '')}
+              </div>
+            );
+          }
+
+          // Regular step — strip leading number
+          const stepText = trimmed.replace(/^\d+[\.\)]\s*/, '');
+          const stepNum = i + 1 - lines.slice(0, i).filter(l => l.trim().startsWith('—')).length;
+
+          return (
+            <div key={i} className="instruction-step">
+              <div className="step-number">{stepNum}</div>
+              <div className="step-text">{stepText}</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export default function RecipeModal({ recipe, onClose }) {
   if (!recipe) return null;
 
-  return (
+  return createPortal(
     <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="modal-content">
         <button className="modal-close" onClick={onClose}>×</button>
@@ -17,16 +67,7 @@ export default function RecipeModal({ recipe, onClose }) {
           </div>
         )}
 
-        {recipe.instructions && (
-          <div className="modal-section" style={{marginTop: '15px'}}>
-            <h3>Instructions</h3>
-            <ol className="instructions-list">
-              {recipe.instructions.split('\n').filter(s => s.trim()).map((step, i) => (
-                <li key={i}>{step.replace(/^\d+\.\s*/, '')}</li>
-              ))}
-            </ol>
-          </div>
-        )}
+        <InstructionSteps instructions={recipe.instructions} />
 
         {recipe.nutrition && (
           <div className="modal-section" style={{marginTop: '15px'}}>
@@ -51,7 +92,18 @@ export default function RecipeModal({ recipe, onClose }) {
             </div>
           </div>
         )}
+
+        {recipe.source_url && (
+          <div style={{marginTop: '15px', textAlign: 'center'}}>
+            <a href={recipe.source_url} target="_blank" rel="noopener noreferrer" 
+               style={{color: 'var(--accent)', fontSize: '14px', textDecoration: 'underline'}}>
+              View Original Recipe ↗
+            </a>
+          </div>
+        )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
+
