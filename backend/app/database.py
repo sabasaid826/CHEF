@@ -8,12 +8,18 @@ from typing import Generator
 
 from app.config import settings
 
-# SQLite requires check_same_thread=False for FastAPI's threaded usage
-engine = create_engine(
-    settings.DATABASE_URL,
-    connect_args={"check_same_thread": False},
-    echo=settings.DEBUG,
-)
+if settings.DATABASE_URL.startswith("sqlite"):
+    engine = create_engine(
+        settings.DATABASE_URL,
+        connect_args={"check_same_thread": False},
+        echo=settings.DEBUG,
+    )
+else:
+    # Use standard create_engine for PostgreSQL and other DBs
+    engine = create_engine(
+        settings.DATABASE_URL,
+        echo=settings.DEBUG,
+    )
 
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 

@@ -10,6 +10,7 @@ email-validator>=2.1.0
 
 # Database (SQLite — uses Python's built-in sqlite3, no extra driver)
 sqlalchemy>=2.0.36
+psycopg2-binary>=2.9.9
 
 # File uploads (for food detection endpoint)
 python-multipart>=0.0.18
