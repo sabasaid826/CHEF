@@ -1547,6 +1547,75 @@ h1, h2, h3, h4, h5, h6 {
     75% { transform: translate(15px, -10px) scale(1.1); opacity: 0.6; }
 }
 
+/* Quick & Easy Grid */
+.quick-recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 2.5rem;
+    animation: fadeIn 0.5s ease 0.3s both;
+}
+
+.mini-recipe-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.mini-recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(224, 122, 95, 0.15);
+}
+
+.mini-recipe-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.mini-recipe-card:hover .mini-recipe-image {
+    transform: scale(1.05);
+}
+
+.mini-recipe-content {
+    padding: 12px;
+}
+
+.mini-recipe-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.mini-recipe-time {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .quick-recipes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .quick-recipes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Quick Actions Grid */
 .quick-actions-grid {
     display: grid;
@@ -1636,71 +1705,257 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.3);
 }
 
-/* ── Fun Fact Card ─────────────────────────────────────────── */
-.fun-fact-section {
-    margin-top: 2.5rem;
-    animation: fadeIn 0.6s ease 0.3s both;
-}
-
-.fun-fact-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 28px !important;
-    position: relative;
+/* ── Fun Fact Carousel Widget ─────────────────────────────── */
+.fun-fact-widget {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: var(--radius);
     overflow: hidden;
-    border-left: 4px solid transparent !important;
-    border-image: var(--gradient-primary) 1;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition), box-shadow var(--transition);
+    position: relative;
 }
 
-.fun-fact-card::before {
-    content: '';
+.fun-fact-widget:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Decorative gradient bar at top */
+.fun-fact-gradient-bar {
+    height: 4px;
+    background: var(--gradient-primary);
+    background-size: 200% 100%;
+    animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Slides container */
+.fun-fact-slides {
+    position: relative;
+    min-height: 220px;
+    overflow: hidden;
+}
+
+.fun-fact-slide {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(224, 122, 95, 0.03) 0%, rgba(129, 178, 154, 0.03) 100%);
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 28px 24px 16px;
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+    transition: opacity 0.45s ease, transform 0.45s ease;
     pointer-events: none;
 }
 
+.fun-fact-slide.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    position: relative;
+}
+
+/* Icon with decorative ring */
+.fun-fact-icon-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 16px;
+}
+
 .fun-fact-icon {
-    font-size: 42px;
-    flex-shrink: 0;
+    font-size: 38px;
     line-height: 1;
+    z-index: 1;
+    filter: drop-shadow(0 3px 10px rgba(224, 122, 95, 0.18));
     animation: floatSoft 3s ease-in-out infinite;
-    filter: drop-shadow(0 2px 8px rgba(224, 122, 95, 0.15));
 }
 
-.fun-fact-body {
-    flex: 1;
-    min-width: 0;
+.fun-fact-icon-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(224, 122, 95, 0.15);
+    animation: ringPulse 3s ease-in-out infinite;
 }
 
+@keyframes ringPulse {
+    0%, 100% {
+        transform: scale(1);
+        border-color: rgba(224, 122, 95, 0.15);
+    }
+    50% {
+        transform: scale(1.12);
+        border-color: rgba(129, 178, 154, 0.2);
+    }
+}
+
+/* Category badge */
 .fun-fact-category {
     display: inline-block;
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--accent-1);
-    background: rgba(224, 122, 95, 0.08);
-    border: 1px solid rgba(224, 122, 95, 0.15);
-    padding: 3px 10px;
+    letter-spacing: 1.2px;
+    color: white;
+    background: var(--gradient-primary);
+    padding: 4px 14px;
     border-radius: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(224, 122, 95, 0.2);
 }
 
+/* Fact text */
 .fun-fact-text {
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.75;
     color: var(--text-secondary);
     font-family: var(--font);
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+/* Navigation controls */
+.fun-fact-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 24px 12px;
+}
+
+.fun-fact-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border-glass);
+    background: var(--glass-bg);
+    color: var(--text-secondary);
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all var(--transition);
+    padding: 0;
+    font-family: var(--font);
+    line-height: 1;
+}
+
+.fun-fact-arrow:hover {
+    background: rgba(224, 122, 95, 0.08);
+    border-color: var(--accent-1);
+    color: var(--accent-1);
+    transform: scale(1.1);
+}
+
+.fun-fact-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.fun-fact-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(224, 122, 95, 0.15);
+    cursor: pointer;
+    transition: all var(--transition);
+    padding: 0;
+}
+
+.fun-fact-dot.active {
+    background: var(--accent-1);
+    transform: scale(1.35);
+    box-shadow: 0 0 8px rgba(224, 122, 95, 0.3);
+}
+
+.fun-fact-dot:hover:not(.active) {
+    background: rgba(224, 122, 95, 0.35);
+    transform: scale(1.15);
+}
+
+/* Auto-play progress bar */
+.fun-fact-progress {
+    height: 2px;
+    background: rgba(224, 122, 95, 0.08);
+    margin: 0 24px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.fun-fact-progress-fill {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    animation: progressFill 6s linear forwards;
+}
+
+.fun-fact-progress-fill.paused {
+    animation-play-state: paused;
+}
+
+@keyframes progressFill {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+/* Footer */
+.fun-fact-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px 14px;
+}
+
+.fun-fact-counter {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent-1);
+    letter-spacing: 0.5px;
+}
+
+.fun-fact-source {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 0.3px;
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] .fun-fact-widget {
+    box-shadow: var(--shadow-card), 0 0 30px rgba(224, 122, 95, 0.04);
 }
 
 [data-theme="dark"] .fun-fact-category {
-    background: rgba(224, 122, 95, 0.12);
+    box-shadow: 0 2px 10px rgba(224, 122, 95, 0.25);
+}
+
+[data-theme="dark"] .fun-fact-icon-ring {
     border-color: rgba(224, 122, 95, 0.2);
+}
+
+[data-theme="dark"] .fun-fact-arrow {
+    background: rgba(36, 28, 22, 0.5);
+}
+
+[data-theme="dark"] .fun-fact-dot {
+    background: rgba(224, 122, 95, 0.2);
 }
 
 @media (max-width: 768px) {

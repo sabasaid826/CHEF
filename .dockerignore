@@ -1,0 +1,45 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+backend/.venv
+__pycache__
+*.pyc
+*.pyo
+
+# Databases (recreated at runtime)
+*.db
+*.sqlite3
+
+# Node
+frontend-react/node_modules
+frontend-react/dist
+
+# Environment / secrets
+.env
+.env.*
+backend/.env
+
+# Docs / reports (not needed for the app)
+docs/
+data/
+
+# Upload scripts
+hf_upload.py
+hf_upload_docker.py
+hf_upload_readme.py
+
+# IDE / OS
+.vscode
+.DS_Store
+pyrightconfig.json
+
+# Misc
+render.yaml
+test.md
+git
+*.md
+!backend/app/*.md
+!frontend-react/*.md

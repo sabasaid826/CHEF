@@ -516,17 +516,94 @@ def delete_saved_recipe(
     response_model=RecipeItem,
     response_model_exclude_none=True,
     summary="Get the recipe of the day",
-    responses={503: {"description": "No recipes available in the database"}},
+    responses={503: {"description": "No recipes available"}},
 )
-def get_daily_recipe():
+async def get_daily_recipe():
     """
     Get the recipe of the day — changes every 24 hours.
-    Only selects high-quality recipes that have:
-    - A valid image URL
-    - Detailed instructions (≥ 50 characters)
-    - At least 3 ingredients
-    Prioritizes vegetarian recipes for a balanced recommendation.
+
+    **Strategy (in order):**
+    1. Spoonacular API — fetches a random recipe with accurate images and full details.
+    2. Local database — filters for high-quality recipes with images and instructions.
     """
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    rng = random.Random(date_str)
+
+    # ── Strategy 1: Spoonacular (accurate images + rich data) ────
+    if settings.SPOONACULAR_API_KEY:
+        try:
+            # Pick a food-related tag to keep results interesting
+            daily_tags = [
+                "main course", "dessert", "appetizer", "salad", "soup",
+                "breakfast", "side dish", "snack", "beverage", "bread",
+            ]
+            tag = rng.choice(daily_tags)
+
+            async with httpx.AsyncClient(timeout=12.0) as client:
+                resp = await client.get(
+                    "https://api.spoonacular.com/recipes/random",
+                    params={
+                        "apiKey": settings.SPOONACULAR_API_KEY,
+                        "number": 1,
+                        "tags": tag,
+                        "includeNutrition": True,
+                    },
+                )
+                if resp.status_code == 200:
+                    data = resp.json()
+                    recipes_list = data.get("recipes", [])
+                    if recipes_list:
+                        info = recipes_list[0]
+                        # Only use if it has a valid image
+                        image_url = info.get("image", "")
+                        if image_url and image_url.startswith("http"):
+                            # Extract ingredients
+                            ext_ingredients = []
+                            for ing in info.get("extendedIngredients", []):
+                                ext_ingredients.append(
+                                    ing.get("original", ing.get("name", ""))
+                                )
+
+                            # Extract nutrition
+                            nutrition = None
+                            nutr_data = info.get("nutrition", {})
+                            if nutr_data:
+                                nutrients = {
+                                    n["name"].lower(): n["amount"]
+                                    for n in nutr_data.get("nutrients", [])
+                                }
+                                nutrition = RecipeNutrition(
+                                    calories=nutrients.get("calories", 0),
+                                    protein_g=nutrients.get("protein", 0),
+                                    carbs_g=nutrients.get("carbohydrates", 0),
+                                    fat_g=nutrients.get("fat", 0),
+                                )
+
+                            # Extract instructions
+                            instructions = _extract_instructions(info)
+
+                            # Clean summary
+                            summary = info.get("summary", "")
+                            if summary:
+                                summary = re.sub(r"<[^>]+>", "", summary)
+
+                            return RecipeItem(
+                                id=str(info.get("id", "")),
+                                title=info.get("title", ""),
+                                image_url=image_url,
+                                summary=summary,
+                                ready_in_minutes=info.get("readyInMinutes"),
+                                servings=info.get("servings"),
+                                ingredients=ext_ingredients,
+                                instructions=instructions or None,
+                                diets=info.get("diets", []),
+                                nutrition=nutrition,
+                                source_url=info.get("sourceUrl"),
+                            )
+        except Exception:
+            pass  # Fall through to local database
+
+    # ── Strategy 2: Local database fallback ──────────────────────
     # Filter to only high-quality, complete recipes
     quality_filter = [
         r for r in DEMO_RECIPES
@@ -545,6 +622,36 @@ def get_daily_recipe():
     if not eligible:
         raise HTTPException(status_code=503, detail="No recipes available in the database.")
 
-    date_str = datetime.now().strftime("%Y-%m-%d")
-    rng = random.Random(date_str)
     return rng.choice(eligible)
+
+
+@router.get(
+    "/quick",
+    response_model=list[RecipeItem],
+    response_model_exclude_none=True,
+    summary="Get 4 quick and easy recipes under 30 minutes",
+)
+async def get_quick_recipes():
+    """
+    Get 4 randomized quick recipes (under 30 minutes).
+    Changes daily to match the recipe of the day's seed behavior.
+    """
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    rng = random.Random(f"quick-{date_str}")
+    
+    # Filter to high-quality, quick recipes
+    quick_filter = [
+        r for r in DEMO_RECIPES
+        if r.ready_in_minutes and r.ready_in_minutes <= 30
+        and r.image_url
+        and r.instructions
+        and len(r.instructions) >= 50
+    ]
+    
+    if not quick_filter:
+        return []
+    
+    # Randomly select up to 4
+    sample_size = min(4, len(quick_filter))
+    return rng.sample(quick_filter, sample_size)
+

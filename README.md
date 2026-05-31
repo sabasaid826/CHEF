@@ -1,3 +1,11 @@
+---
+title: CHEF
+emoji: 👨‍🍳
+colorFrom: yellow
+colorTo: red
+sdk: docker
+app_port: 7860
+---
 # CHEF — Constraint-based Hybrid Eating Framework
 *Your ingredients. Our intelligence.*
 

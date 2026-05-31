@@ -3,8 +3,18 @@ Application configuration — loaded from .env via pydantic-settings.
 All API keys are optional; the app falls back to demo data when they're missing.
 """
 
+import os
+import secrets
+import logging
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+logger = logging.getLogger(__name__)
+
+# Generate a secure fallback so the app never ships a guessable default.
+# If JWT_SECRET_KEY is not explicitly set, this random value is used —
+# safe, but tokens won't survive container restarts.
+_GENERATED_JWT_SECRET = secrets.token_hex(32)
 
 
 class Settings(BaseSettings):
@@ -27,16 +37,18 @@ class Settings(BaseSettings):
     def cors_origins_list(self) -> list[str]:
         return [o.strip() for o in self.CORS_ORIGINS.split(",")]
 
-    # Database (SQLite)
-    DATABASE_URL: str = "sqlite:///./chef.db"
+    # Database (SQLite) - uses /home/user/chef.db in HF Spaces if HOME is set, otherwise falls back to local path.
+    DATABASE_URL: str = f"sqlite:///{os.environ.get('HOME', '.')}/chef.db"
 
     # Optional external API keys — leave blank to use demo data
     SPOONACULAR_API_KEY: str = ""
     EDAMAM_APP_ID: str = ""
     EDAMAM_APP_KEY: str = ""
 
-    # JWT Authentication
-    JWT_SECRET_KEY: str
+    # JWT Authentication — defaults to a per-process random secret so tokens
+    # are never signed with a publicly known key.  Set JWT_SECRET_KEY in your
+    # environment / .env for persistent sessions across restarts.
+    JWT_SECRET_KEY: str = _GENERATED_JWT_SECRET
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRY_MINUTES: int = 30
 
@@ -51,3 +63,11 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+# Warn operators if they haven't set an explicit secret
+if settings.JWT_SECRET_KEY == _GENERATED_JWT_SECRET:
+    logger.warning(
+        "⚠️  JWT_SECRET_KEY is not set — using a random secret. "
+        "User sessions will NOT survive server restarts. "
+        "Set JWT_SECRET_KEY in your environment or .env file for production."
+    )

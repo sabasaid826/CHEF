@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from 'react';
+import React, { useState, useEffect, useContext, useMemo, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { AuthContext } from '../context/AuthContext';
@@ -12,22 +12,50 @@ function getGreeting() {
   return 'Good Evening';
 }
 
+const FACT_COUNT = 3;
+const AUTO_ROTATE_MS = 6000;
+
 export default function Home() {
   const { username } = useContext(AuthContext);
   const navigate = useNavigate();
   const [dailyRecipe, setDailyRecipe] = useState(null);
+  const [quickRecipes, setQuickRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [quickLoading, setQuickLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [activeFact, setActiveFact] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const timerRef = useRef(null);
 
   const greeting = useMemo(() => getGreeting(), []);
 
-  // Pick one fact per day using a deterministic daily index
-  const dailyFact = useMemo(() => {
+  // Pick FACT_COUNT facts per day using a deterministic daily seed
+  const dailyFacts = useMemo(() => {
     const now = new Date();
-    const dayIndex = Math.floor(now.getTime() / 86400000); // days since epoch
-    return foodFacts[dayIndex % foodFacts.length];
+    const dayIndex = Math.floor(now.getTime() / 86400000);
+    // simple seeded shuffle to pick FACT_COUNT facts
+    const indices = foodFacts.map((_, i) => i);
+    let seed = dayIndex;
+    for (let i = indices.length - 1; i > 0; i--) {
+      seed = (seed * 16807 + 0) % 2147483647;
+      const j = seed % (i + 1);
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    return indices.slice(0, FACT_COUNT).map(i => foodFacts[i]);
   }, []);
+
+  // Auto-rotate facts
+  const nextFact = useCallback(() => {
+    setActiveFact(prev => (prev + 1) % dailyFacts.length);
+  }, [dailyFacts.length]);
+
+  useEffect(() => {
+    if (isPaused) return;
+    timerRef.current = setInterval(nextFact, AUTO_ROTATE_MS);
+    return () => clearInterval(timerRef.current);
+  }, [isPaused, nextFact]);
 
   useEffect(() => {
     api.get('/recipes/daily')
@@ -38,6 +66,16 @@ export default function Home() {
       .catch(err => {
         setError(err.message);
         setLoading(false);
+      });
+
+    api.get('/recipes/quick')
+      .then(data => {
+        setQuickRecipes(data);
+        setQuickLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to fetch quick recipes:", err);
+        setQuickLoading(false);
       });
   }, []);
 
@@ -64,7 +102,7 @@ export default function Home() {
   };
 
   const quickActions = [
-    { icon: '🧪', label: 'By Ingredients', desc: 'Cook with what you have', path: '/ingredients' },
+    { icon: '🥕', label: 'By Ingredients', desc: 'Cook with what you have', path: '/ingredients' },
     { icon: '📖', label: 'Browse Recipes', desc: 'Explore our collection', path: '/recipes' },
     { icon: '📸', label: 'Food Detection', desc: 'Identify food by image', path: '/detection' },
     { icon: '🎯', label: 'Calorie Profile', desc: 'Track your daily goals', path: '/tdee' },
@@ -127,7 +165,7 @@ export default function Home() {
                     </div>
                   )}
                   <div className="recipe-actions">
-                    <button className="btn-primary" onClick={() => setModalOpen(true)}>Let's Cook</button>
+                    <button className="btn-primary" onClick={() => { setSelectedRecipe(dailyRecipe); setModalOpen(true); }}>Let's Cook</button>
                     <button className="btn-secondary" onClick={handleSaveRecipe}>💾 Bookmark</button>
                   </div>
                 </div>
@@ -136,17 +174,98 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="kitchen-side-col">
+        <div
+          className="kitchen-side-col"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <h2 className="section-title">💡 Did You Know?</h2>
-          <div className="card glass fun-fact-card">
-            <div className="fun-fact-icon">{dailyFact.icon}</div>
-            <div className="fun-fact-body">
-              <span className="fun-fact-category">{dailyFact.category}</span>
-              <p className="fun-fact-text">{dailyFact.fact}</p>
+          <div className="fun-fact-widget">
+            {/* Decorative top gradient bar */}
+            <div className="fun-fact-gradient-bar" />
+
+            {/* Fact slides */}
+            <div className="fun-fact-slides">
+              {dailyFacts.map((fact, idx) => (
+                <div
+                  key={idx}
+                  className={`fun-fact-slide ${idx === activeFact ? 'active' : ''}`}
+                >
+                  <div className="fun-fact-icon-wrap">
+                    <span className="fun-fact-icon">{fact.icon}</span>
+                    <div className="fun-fact-icon-ring" />
+                  </div>
+                  <span className="fun-fact-category">{fact.category}</span>
+                  <p className="fun-fact-text">{fact.fact}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation controls */}
+            <div className="fun-fact-controls">
+              <button
+                className="fun-fact-arrow"
+                onClick={() => setActiveFact(prev => (prev - 1 + dailyFacts.length) % dailyFacts.length)}
+                aria-label="Previous fact"
+              >
+                ‹
+              </button>
+              <div className="fun-fact-dots">
+                {dailyFacts.map((_, idx) => (
+                  <button
+                    key={idx}
+                    className={`fun-fact-dot ${idx === activeFact ? 'active' : ''}`}
+                    onClick={() => setActiveFact(idx)}
+                    aria-label={`Fact ${idx + 1}`}
+                  />
+                ))}
+              </div>
+              <button
+                className="fun-fact-arrow"
+                onClick={() => setActiveFact(prev => (prev + 1) % dailyFacts.length)}
+                aria-label="Next fact"
+              >
+                ›
+              </button>
+            </div>
+
+            {/* Auto-play progress bar */}
+            <div className="fun-fact-progress">
+              <div
+                className={`fun-fact-progress-fill ${isPaused ? 'paused' : ''}`}
+                key={activeFact}
+              />
+            </div>
+
+            <div className="fun-fact-footer">
+              <span className="fun-fact-counter">{activeFact + 1} / {dailyFacts.length}</span>
+              <span className="fun-fact-source">Verified food science</span>
             </div>
           </div>
         </div>
       </div>
+
+      {/* ── Quick & Easy Grid ── */}
+      <h2 className="section-title" style={{ marginTop: '2rem' }}>⏱️ Quick & Easy (Under 30 Mins)</h2>
+      {quickLoading ? (
+        <div className="quick-recipes-grid">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="card glass skeleton" style={{ height: '180px' }}></div>
+          ))}
+        </div>
+      ) : quickRecipes.length > 0 && (
+        <div className="quick-recipes-grid">
+          {quickRecipes.map(recipe => (
+            <div key={recipe.id} className="card glass mini-recipe-card" onClick={() => { setSelectedRecipe(recipe); setModalOpen(true); }}>
+              <img src={recipe.image_url} alt={recipe.title} className="mini-recipe-image" />
+              <div className="mini-recipe-content">
+                <h3 className="mini-recipe-title">{recipe.title}</h3>
+                <span className="mini-recipe-time">⏱️ {recipe.ready_in_minutes} min</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* ── Quick Actions Grid ── */}
       <h2 className="section-title" style={{ marginTop: '2rem' }}>🚀 Explore</h2>
@@ -164,8 +283,8 @@ export default function Home() {
         ))}
       </div>
       
-      {isModalOpen && dailyRecipe && (
-        <RecipeModal recipe={dailyRecipe} onClose={() => setModalOpen(false)} />
+      {isModalOpen && selectedRecipe && (
+        <RecipeModal recipe={selectedRecipe} onClose={() => { setModalOpen(false); setSelectedRecipe(null); }} />
       )}
     </section>
   );

@@ -8,9 +8,9 @@ pydantic>=2.10.0
 pydantic-settings>=2.6.0
 email-validator>=2.1.0
 
-# Database (SQLite — uses Python's built-in sqlite3, no extra driver)
+# Database (SQLite / PostgreSQL)
 sqlalchemy>=2.0.36
-psycopg2-binary>=2.9.9
+pg8000>=1.31.1
 
 # File uploads (for food detection endpoint)
 python-multipart>=0.0.18
@@ -21,8 +21,7 @@ httpx>=0.28.0
 passlib[bcrypt]>=1.7.4
 python-jose[cryptography]>=3.3.0
 
-# Computer Vision
-ultralytics
+# Computer Vision (Note: YOLO/ultralytics removed due to HF free tier build constraints. Detection endpoint will return 503)
 Pillow
 
 # Environment
